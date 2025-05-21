@@ -176,6 +176,9 @@ Instructions on how to use CQmanager for automated IDAT pairs analysis are in [C
 
 ## Prepare WSL2 image
 
+>[!NOTE]
+>All following commands are to be executed in powershell
+
 Steps:
 1. Download the [WSL2 image](https://epidip.usb.ch/cnquant/cnquant.tar)
 2. Import the WSL2 image:
@@ -202,7 +205,7 @@ Replace C:\path\to\store\wsl\images with where you want to store the WSL2 image 
 \\wsl.localhost\cnquant\home\cnquant\data\diagnoses\reference_data_annotation.csv
 ```
 Add Sentrix IDs in the Sentrix_id column and references in the MC column.
-
+**TODO**: Simplify it
 ## Analyse data with CQcalc
 
 1. Start CnQuant WSL2 image
@@ -261,18 +264,37 @@ Run CQall_plotter with default settings:
 ``` powershell
 run_cqall_plotter
 ```
-or specify
+or specify the arguments
+
+--preprocessing_method: illumina or swan
+--methylation_classes: comma-separated list of methylation classes
+--min_sentrix_ids_per_plot: minimum number of samples per plot
+For example:
+``` powershell
+run_cqall_plotter --preprocessing_method illumina --methylation_classes AML,GBM_RTKII --min_sentrix_ids_per_plot 10
+```
+
+``` powershell
+wsl -d cnquant --user cnquant --cd /home/cnquant/cqall_plotter -e bash -c "/home/cnquant/cqall_plotter/run_cqall_plotter.sh --preprocessing_method bla"
+```
 
 
 ## Inspect single-case results with CQcase
-1. Inspect results:
-Use [CQcase](https://github.com/neuropathbasel-pub/CQcase) in WSL2 to review your data.
 
->[!NOTE]
->Invalid IDAT pairs are logged in cnv_conversion_register.csv in the logs directory. To retry processing, add the --rerun_sentrix_ids flag to the cqcalc command.
+1. Start CnQuant WSL2 image and CQcase:
+``` powershell
+wsl -d cnquant --user cnquant -e bash -c /home/cnquant/cqcase/run_cqcase.sh
+```
+2. Access CQcase in your browser
+http:localhost:8062/cqcase
 
 ## Inspect CN Summary Plots with CQall
-
+1. Start CnQuant WSL2 image and CQall:
+``` powershell
+wsl -d cnquant --user cnquant -e bash -c /home/cnquant/cqall/run_cqall.sh
+```
+2. Access CQcase in your browser
+http:localhost:8060/cqall
 
 
 # Detailed instructions for all CnQuant applications
