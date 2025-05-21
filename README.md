@@ -6,15 +6,14 @@
     - [Directory structure and data annotation files](#directory-structure-and-data-annotation-files)
     - [Software requirements](#software-requirements)
     - [Manifests, reference IDAT pair, and data annotations download](#manifests-reference-IDAT-pair-and-data-annotations-download)
-- [Running the app with Docker](#running-the-app-with-docker)
-    - [CLI execution for basic use](#cli-execution)
+- [Execution with CQmanager](#execution-with-cqmanager)
 - [Running CnQuant apps in WSL2](#running-CnQuant-apps-in-wsl2)
-    - [Execution with CQmanager](#execution-with-cqmanager)
-- [Installation and running the app without Docker](#installation-and-running-the-app-without-docker)
 
 # Disclaimer
 
-Implementation of this software in a diagnostic setting occurs in the sole responsibility of the treating physician. Usage of this software occurs at the risk of the user. The authors may not be held liable for any damage (including hardware) this software might cause. Use is explicitly restricted to academic and non-for-profit organizations.
+Implementation of this software in a diagnostic setting occurs in the sole responsibility of the treating physician.
+Usage of this software occurs at the risk of the user. The authors may not be held liable for any damage (including hardware) this software might cause.
+Use is explicitly restricted to academic and non-for-profit organizations.
 
 # Introduction to the app
 
