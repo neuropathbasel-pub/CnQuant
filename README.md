@@ -61,7 +61,7 @@ Modifying .env files for WSL2 is typically not necessary.
 
 Before running any of the 5 applications (not needed for WSL2),
 you will need to create the following directories and define them in your .env file.
-Download [example.env](https://github.com/neuropathbasel-dev/CQcalc/blob/main/example.env) into your environment directory where you wish to install one of the CnQuant apps,
+Download [example.env](https://github.com/neuropathbasel-pub/CnQuant/blob/main/example.env) into your environment directory where you wish to install one of the CnQuant apps,
 rename it to .env and adjust the paths inside the .env file.
 
 >[!Note]
