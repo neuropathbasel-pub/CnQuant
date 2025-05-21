@@ -26,14 +26,29 @@ CnQuant consists of the following programs (stored in separate repositories) for
 - [CQcase](https://github.com/neuropathbasel-pub/CQcase)
 - [CQall](https://github.com/neuropathbasel-pub/CQall)
 
-CnQuant seamlessly integrates raw data from multiple kit versions (450k, EPICv1, and EPICv2), merging it into an Illumina Infinium Methylation array 450k format for consistent downstream processing. Leveraging this harmonized data, [CQcalc](https://github.com/neuropathbasel-pub/CQcalc) computes copy number variants (CNVs) and [CQcase](https://github.com/neuropathbasel-pub/CQcase) visualizes these results for every processed IDAT pair, offering clinicians clear, actionable insights. Beyond case-based CNV analysis, [CQall plotter](https://github.com/neuropathbasel-pub/CQall_plotter) generates tumor entity-specific summary plots that highlight recurrent CNV patterns. The summary plots are visualized with [CQall](https://github.com/neuropathbasel-pub/CQall). In sum, CnQuant simplifies complex workflows, delivering robust results in an intuitive package.
-CnQuant is optimized for low-latency data visualization and inspection. The CNV data is pre-analyzed on a local server and stored in parquet files for rapid viewing and examination through the web-based frontends [CQcase](https://github.com/neuropathbasel-pub/CQcase) and [CQall](https://github.com/neuropathbasel-pub/CQall).
+CnQuant seamlessly integrates raw data from multiple kit versions (450k, EPICv1, and EPICv2),
+merging it into an Illumina Infinium Methylation array 450k format for consistent downstream processing.
+Leveraging this harmonized data, [CQcalc](https://github.com/neuropathbasel-pub/CQcalc) computes copy number variants (CNVs)
+and [CQcase](https://github.com/neuropathbasel-pub/CQcase) visualizes these results for every processed IDAT pair,
+offering clinicians clear, actionable insights.
+Beyond case-based CNV analysis, [CQall plotter](https://github.com/neuropathbasel-pub/CQall_plotter)
+generates tumor entity-specific summary plots that highlight recurrent CNV patterns.
+The summary plots are visualized with [CQall](https://github.com/neuropathbasel-pub/CQall).
+In sum, CnQuant simplifies complex workflows, delivering robust results in an intuitive package.
+CnQuant is optimized for low-latency data visualization and inspection.
+The CNV data is pre-analyzed on a local server and stored in parquet files for rapid viewing and examination through the web-based frontends [CQcase](https://github.com/neuropathbasel-pub/CQcase) and [CQall](https://github.com/neuropathbasel-pub/CQall).
 
 # Requirements
 
 If you do not have Docker installed on your system, proceed to Docker installation documentation for your platform.</br>
 After the installation, ensure to carry out the post-installation steps to run the container as a non-root user.
 If you are not familiar with docker, you might be interested in [Docker Curriculum](https://docker-curriculum.com/).
+
+Another option to run the CnQuant apps is WSL2 subsystem for Windows, described in [Running CnQuant apps in WSL2](#running-cnquant-apps-in-wsl2).
+
+The last option (not recommended) is to install the applications with pip
+but it will require R-4.3.0 installation with CnQuant R dependencies,
+which is described separately in each of the applications repository.
 
 ## Directory structure and data annotation files
 
