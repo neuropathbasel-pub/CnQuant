@@ -175,6 +175,7 @@ Instructions on how to use CQmanager for automated IDAT pairs analysis are in [C
 # Running CnQuant apps in WSL2
 
 ## Prepare WSL2 image
+
 Steps:
 1. Download the [WSL2 image](https://epidip.usb.ch/cnquant/cnquant.tar)
 2. Import the WSL2 image:
@@ -185,6 +186,9 @@ wsl --import cnquant windows_path_where_you_wish_to_keep_WSL_images windows_path
 ```
 
 Replace C:\path\to\store\wsl\images with where you want to store the WSL2 image and C:\path\to\cnquant.tar with the path to the downloaded image.
+
+>[!TIP]
+>You may change settings for CnQuant apps in WSL2 by modifying /home/cnquant/.env file
 
 3. Copy Sentrix ID pairs:
 - Place your Sentrix ID pairs and reference IDAT files in the same directory.
@@ -200,10 +204,11 @@ Replace C:\path\to\store\wsl\images with where you want to store the WSL2 image 
 Add Sentrix IDs in the Sentrix_id column and references in the MC column.
 
 ## Analyse data with CQcalc
+
 1. Start CnQuant WSL2 image
 
 ``` powershell
-wsl -d cnquant --user cnquant --cd /home/cnquant/cqall
+wsl -d cnquant --user cnquant --cd /home/cnquant/cqcalc
 ```
 2. Activate CQcalc environment:
 ``` powershell
@@ -225,7 +230,7 @@ cqcalc \
 --sentrix_ids 'your_sentrix_id1,your_sentrix_id2,your_sentrix_id3'"
 ```
 
-Note following minimal and maximal bin size and minimum probes per bin settings:
+Following minimal and maximal bin size and minimum probes per bin settings:
 bin_size: minimum 1000, maximum 100000
 min_probes_per_bin: minimum 10, maximum 50
 
@@ -241,8 +246,22 @@ The CQcalc code allows to exceed those values but the execution might crash.
 ```
 Add Sentrix IDs in the Sentrix_id column and methylation class in the MC column.
 
-The .env file in 
+2. Start CnQuant WSL2 image:
+``` powershell
+wsl -d cnquant --user cnquant --cd /home/cnquant/cqall_plotter
+```
 
+2. Activate CQall_plotter environment:
+``` powershell
+source .venv/bin/activate
+```
+
+3. Start CQall_plotter
+Run CQall_plotter with default settings:
+``` powershell
+run_cqall_plotter
+```
+or specify
 
 
 ## Inspect single-case results with CQcase
