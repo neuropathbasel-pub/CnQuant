@@ -61,7 +61,7 @@ Modifying .env files for WSL2 is typically not necessary.
 
 Before running any of the 5 applications (not needed for WSL2),
 you will need to create the following directories and define them in your .env file.
-Download [example.env](https://github.com/neuropathbasel-pub/CnQuant/blob/main/example.env) into your environment directory where you wish to install one of the CnQuant apps,
+Download [example.env](https://github.com/neuropathbasel-pub/CnQuant/blob/main/example.env) into your environment directory or in it's partent directory where you wish to install one of the CnQuant apps,
 rename it to .env and adjust the paths inside the .env file.
 
 >[!Note]
@@ -189,61 +189,74 @@ Replace C:\path\to\store\wsl\images with where you want to store the WSL2 image 
 3. Copy Sentrix ID pairs:
 - Place your Sentrix ID pairs and reference IDAT files in the same directory.
 - Copy them to:
-
 ```
 \\wsl.localhost\cnquant\home\cnquant\data\idat
 ```
 
-- Update the reference annotations in:
+4. Update the reference annotations in:
 ```
 \\wsl.localhost\cnquant\home\cnquant\data\diagnoses\reference_data_annotation.csv
 ```
 Add Sentrix IDs in the Sentrix_id column and references in the MC column.
 
-4. Start CnQuant applications in WSL2 image:
-In PowerShell:
+## Analyse data with CQcalc
+1. Start CnQuant WSL2 image
 
 ``` powershell
-wsl -d cnquant --user cnquant --cd /home/cnquant/cqcalc -e "source /home/cnquant/cqcalc/.venv/bin/activate && cqcalc \
+wsl -d cnquant --user cnquant --cd /home/cnquant/cqall
+```
+2. Activate CQcalc environment:
+``` powershell
+source .venv/bin/activate
+```
+3. Analyse IDAT pairs:
+
+With default settings  of preprocessing method Illumina, bin size of 50000, and minimum probes per bin of 20:
+``` powershell
+cqcalc \
+--sentrix_ids 'your_sentrix_id1,your_sentrix_id2,your_sentrix_id3'"
+```
+or adapt preprocessing_method, bin_size, and min_probes_per_bin parameters
+``` powershell
+cqcalc \
 --preprocessing_method illumina \
 --bin_size 50000 \
 --min_probes_per_bin 20 \
 --sentrix_ids 'your_sentrix_id1,your_sentrix_id2,your_sentrix_id3'"
 ```
 
-``` powershell
-wsl -d cnquant --user cnquant --cd /home/cnquant/cqall -e bash -c "source /home/cnquant/cqall/.venv/bin/activate"  && echo aaa && run_cqall
-wsl -d cnquant --user cnquant --cd /home/cnquant/cqall -e bash -c "source /home/cnquant/cqall/.venv/bin/activate && exec bash"
-wsl -d cnquant --user cnquant --cd /home/cnquant/cqall -e bash -c "source /home/cnquant/cqall/.venv/bin/activate && export POLARS_ALLOW_FORKING_THREAD=1 && run_cqall && exec bash"
-```
+Note following minimal and maximal bin size and minimum probes per bin settings:
+bin_size: minimum 1000, maximum 100000
+min_probes_per_bin: minimum 10, maximum 50
 
-``` powershell
-wsl -d cnquant --user cnquant --cd /home/cnquant/cqcase -e source /home/cnquant/cqcalc/.venv/bin/activate
-```
+The CQcalc code allows to exceed those values but the execution might crash.
 
-``` powershell
-wsl -d cnquant --user cnquant --cd /home/cnquant/cqall_plotter -e source /home/cnquant/cqcalc/.venv/bin/activate
-```
+@Jürgen: I can also limit the accepted parameters by CQcalc with an error message for the user
 
-5. Activate the virtual environment:
-``` bash
-source .venv/bin/activate
+## Prepare CN Summary Plots with CQall_plotter
+
+1. Update the data annotations in:
 ```
-6. Analyze your samples:
-``` bash
-cqcalc \
---preprocessing_method illumina \
---bin_size 50000 \
---min_probes_per_bin 20 \
---sentrix_ids 'your_sentrix_id1,your_sentrix_id2,your_sentrix_id3'
+\\wsl.localhost\cnquant\home\cnquant\data\diagnoses\data_annotation.csv
 ```
-7. Inspect results:
+Add Sentrix IDs in the Sentrix_id column and methylation class in the MC column.
+
+The .env file in 
+
+
+
+## Inspect single-case results with CQcase
+1. Inspect results:
 Use [CQcase](https://github.com/neuropathbasel-pub/CQcase) in WSL2 to review your data.
 
 >[!NOTE]
 >Invalid IDAT pairs are logged in cnv_conversion_register.csv in the logs directory. To retry processing, add the --rerun_sentrix_ids flag to the cqcalc command.
 
-# Detailed instructions for separate applications
+## Inspect CN Summary Plots with CQall
+
+
+
+# Detailed instructions for all CnQuant applications
 
 - [CQmanager](https://github.com/neuropathbasel-pub/CQmanager)
 - [CQcalc](https://github.com/neuropathbasel-pub/CQcalc)
