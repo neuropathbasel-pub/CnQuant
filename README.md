@@ -186,12 +186,31 @@ Replace C:\path\to\store\wsl\images with where you want to store the WSL2 image 
 ```
 Add Sentrix IDs in the Sentrix_id column and references in the MC column.
 
-4. Start the WSL2 image:
+4. Start CnQuant applications in WSL2 image:
 In PowerShell:
 
 ``` powershell
-wsl -d cnquant --user cnquant --cd /home/cnquant/cqcalc
+wsl -d cnquant --user cnquant --cd /home/cnquant/cqcalc -e "source /home/cnquant/cqcalc/.venv/bin/activate && cqcalc \
+--preprocessing_method illumina \
+--bin_size 50000 \
+--min_probes_per_bin 20 \
+--sentrix_ids 'your_sentrix_id1,your_sentrix_id2,your_sentrix_id3'"
 ```
+
+``` powershell
+wsl -d cnquant --user cnquant --cd /home/cnquant/cqall -e bash -c "source /home/cnquant/cqall/.venv/bin/activate"  && echo aaa && run_cqall
+wsl -d cnquant --user cnquant --cd /home/cnquant/cqall -e bash -c "source /home/cnquant/cqall/.venv/bin/activate && exec bash"
+wsl -d cnquant --user cnquant --cd /home/cnquant/cqall -e bash -c "source /home/cnquant/cqall/.venv/bin/activate && export POLARS_ALLOW_FORKING_THREAD=1 && run_cqall && exec bash"
+```
+
+``` powershell
+wsl -d cnquant --user cnquant --cd /home/cnquant/cqcase -e source /home/cnquant/cqcalc/.venv/bin/activate
+```
+
+``` powershell
+wsl -d cnquant --user cnquant --cd /home/cnquant/cqall_plotter -e source /home/cnquant/cqcalc/.venv/bin/activate
+```
+
 5. Activate the virtual environment:
 ``` bash
 source .venv/bin/activate
