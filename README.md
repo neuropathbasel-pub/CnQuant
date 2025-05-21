@@ -159,18 +159,18 @@ while the other CnQuant applications would probably run on a system with larger 
 - Docker (recommended) or WLS2 (CQmanager is not implemented on WLS2)
 - Manifests from [Mepylome](https://pypi.org/project/mepylome) package.
 - IDAT pair named 'ref450k_Grn.idat' and 'ref450k_Red.idat' in the idat_directory
-- data annotation
-- reference data annotation
+- data annotation file (described below)
+- reference data annotation file (described below)
 
 ## Manifests, reference IDAT pair, and data annotations download
 
-- Download [data](https://docs.google.com/spreadsheets/d/e/2PACX-1vRhQ7Cr3aBo8W9Ne8DAehMvFRxYd395ENIW9giK2ATQ3QSrM8jA2E7xXbnW7CWKMdh0IhN0YqWn37Wr/pub?gid=0&single=true&output=csv) and [reference](https://docs.google.com/spreadsheets/d/e/2PACX-1vRhQ7Cr3aBo8W9Ne8DAehMvFRxYd395ENIW9giK2ATQ3QSrM8jA2E7xXbnW7CWKMdh0IhN0YqWn37Wr/pub?gid=522048357&single=true&output=csv) data annotation sheets into the "diagnoses" directory specified in your .env file.
+- Download [data annotation file](https://docs.google.com/spreadsheets/d/e/2PACX-1vRhQ7Cr3aBo8W9Ne8DAehMvFRxYd395ENIW9giK2ATQ3QSrM8jA2E7xXbnW7CWKMdh0IhN0YqWn37Wr/pub?gid=0&single=true&output=csv) and [reference data annotation file](https://docs.google.com/spreadsheets/d/e/2PACX-1vRhQ7Cr3aBo8W9Ne8DAehMvFRxYd395ENIW9giK2ATQ3QSrM8jA2E7xXbnW7CWKMdh0IhN0YqWn37Wr/pub?gid=522048357&single=true&output=csv) data annotation sheets into the "diagnoses" directory specified in your .env file.
 - Download [manifests](https://epidip.usb.ch/cnquant/manifests.zip) and unzip it into the "manifests" directory specified in your .env file.
 - Download [reference IDAT pair](https://epidip.usb.ch/cnquant/ref450K.zip) and unzip it into the IDAT directory specified in your .env file.
 
 ## Execution with CQmanager
 
-For automated executions with CQmanager instructions in [CQmanager](https://github.com/neuropathbasel-pub/CQmanager) repository
+Instructions on how to use [CQmanager](https://github.com/neuropathbasel-pub/CQmanager).
 
 # Running CnQuant apps in WSL2
 
