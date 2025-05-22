@@ -64,6 +64,9 @@ neuropathologiebasel/cqcase:latest \
 neuropathologiebasel/cqall:latest \
 neuropathologiebasel/cqall_plotter:latest
 
+# Before this command, the cnquant_images.tar needs to be transferred
+# to the host machine without internet connection
+
 docker load -i cnquant_images.tar
 ```
 
