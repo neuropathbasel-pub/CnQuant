@@ -21,7 +21,7 @@ Implementation of this software in a diagnostic setting occurs in the sole respo
 Usage of this software occurs at the risk of the user. The authors may not be held liable for any damage (including hardware) this software might cause.
 Use is explicitly restricted to academic and non-for-profit organizations.
 
-# Introduction to the app
+# Introduction
 
 CnQuant, is a lightweight stack of 5 applications designed to streamline the analysis of Illumina Infinium Methylation array data through a web browser
 CnQuant consists of the following programs (stored in separate repositories) for CNV calculation and visualization:
