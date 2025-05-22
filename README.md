@@ -53,7 +53,8 @@ which is described separately in each of the applications repository.
 ## Directory structure and data annotation files
 
 For convenience, the same .env file is used for each app.
-The .env file needs to be located in each apps' main directory.
+The .env file needs to be located in each apps' main directory or it's parent directory.
+The .env file in an application directory has precedence before the .env file in the parent's directory.
 An "example.env" file is provided in each application's directory.
 Modifying .env files for WSL2 is typically not necessary.
 
@@ -205,32 +206,17 @@ Replace C:\path\to\store\wsl\images with where you want to store the WSL2 image 
 \\wsl.localhost\cnquant\home\cnquant\data\diagnoses\reference_data_annotation.csv
 ```
 Add Sentrix IDs in the Sentrix_id column and references in the MC column.
-**TODO**: Simplify it
+
 ## Analyse data with CQcalc
 
-1. Start CnQuant WSL2 image
-
+1. Analyse IDAT pairs in WSL2 image:
+with default settings:
 ``` powershell
-wsl -d cnquant --user cnquant --cd /home/cnquant/cqcalc
+wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqcalc/run_cqcalc.sh --sentrix_ids Sentix_ID1,Sentrix_ID2"
 ```
-2. Activate CQcalc environment:
+or with custom bin size, minimum probes per bin, or preprocessing method
 ``` powershell
-source .venv/bin/activate
-```
-3. Analyse IDAT pairs:
-
-With default settings  of preprocessing method Illumina, bin size of 50000, and minimum probes per bin of 20:
-``` powershell
-cqcalc \
---sentrix_ids 'your_sentrix_id1,your_sentrix_id2,your_sentrix_id3'"
-```
-or adapt preprocessing_method, bin_size, and min_probes_per_bin parameters
-``` powershell
-cqcalc \
---preprocessing_method illumina \
---bin_size 50000 \
---min_probes_per_bin 20 \
---sentrix_ids 'your_sentrix_id1,your_sentrix_id2,your_sentrix_id3'"
+wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqcalc/run_cqcalc.sh --preprocessing_method illumina --bin_size 50000 --min_probes_per_bin 20 --sentrix_ids Sentix_ID1,Sentrix_ID2"
 ```
 
 Following minimal and maximal bin size and minimum probes per bin settings:
@@ -249,34 +235,19 @@ The CQcalc code allows to exceed those values but the execution might crash.
 ```
 Add Sentrix IDs in the Sentrix_id column and methylation class in the MC column.
 
-2. Start CnQuant WSL2 image:
+2. Start CnQCQall_plotter in WSL2 image with default settings:
 ``` powershell
-wsl -d cnquant --user cnquant --cd /home/cnquant/cqall_plotter
+wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqall_plotter/run_cqall_plotter.sh"
 ```
-
-2. Activate CQall_plotter environment:
+or
+Start CnQCQall_plotter in WSL2 image with modified settings:
 ``` powershell
-source .venv/bin/activate
+wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqall_plotter/run_cqall_plotter.sh --preprocessing_method illumina --min_sentrix_ids_per_plot 5 --methylation_classes AML,GBM_RTKII"
 ```
-
-3. Start CQall_plotter
-Run CQall_plotter with default settings:
-``` powershell
-run_cqall_plotter
-```
-or specify the arguments
-
---preprocessing_method: illumina or swan
---methylation_classes: comma-separated list of methylation classes
---min_sentrix_ids_per_plot: minimum number of samples per plot
-For example:
-``` powershell
-run_cqall_plotter --preprocessing_method illumina --methylation_classes AML,GBM_RTKII --min_sentrix_ids_per_plot 10
-```
-
-``` powershell
-wsl -d cnquant --user cnquant --cd /home/cnquant/cqall_plotter -e bash -c "/home/cnquant/cqall_plotter/run_cqall_plotter.sh --preprocessing_method bla"
-```
+where:
+--methylation_classes takes comma-separated list of methylation classes that are available in data_annotation.csv file in diagnoses directory.
+--preprocessing_method can be illumina or swan. Requires output from CQcalc.
+--min_sentrix_ids_per_plot defines minimum number of samples per methylation class to generate a plot.
 
 
 ## Inspect single-case results with CQcase
