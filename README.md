@@ -197,7 +197,7 @@ while the other CnQuant applications would probably run on a system with larger 
 
 ## Execution with CQmanager
 
-Instructions on how to use CQmanager for automated IDAT pairs analysis are in [CQmanager repository](https://github.com/neuropathbasel-pub/CQmanager).
+Instructions on how to use CQmanager for running CnQuant applications are in [CQmanager repository](https://github.com/neuropathbasel-pub/CQmanager).
 
 # Running CnQuant apps in WSL2
 
