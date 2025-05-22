@@ -274,8 +274,9 @@ where:</br>
 wsl -d cnquant --user cnquant -e bash -c /home/cnquant/cqcase/run_cqcase.sh
 ```
 2. Access CQcase in your browser
+```
 http:localhost:8062/cqcase
-
+```
 ## CN Summary Plots inspection with CQall
 
 >[!NOTE]
@@ -286,8 +287,9 @@ http:localhost:8062/cqcase
 wsl -d cnquant --user cnquant -e bash -c /home/cnquant/cqall/run_cqall.sh
 ```
 2. Access CQcase in your browser
+```
 http:localhost:8060/cqall
-
+```
 
 # Detailed instructions for all CnQuant applications
 
