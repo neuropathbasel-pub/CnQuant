@@ -13,7 +13,7 @@
     - [CN Summary Plots with CQall_plotter](#cn-summary-plots-with-cqall_plotter)
     - [Per-case results inspection with CQcase](#per-case-results-inspection-with-cqcase)
     - [CN Summary Plots inspection with CQall](#cn-summary-plots-inspection-with-cqall)
-- [Installation with pip and execution without Docker or WSL2](#installation-with-pip-and-execution-without-docker-or-wsl2)
+- [Alternative ways to install and run CnQuant apps](#alternative-ways-to-install-and-run-cnquant-apps)
 
 # Disclaimer
 
@@ -291,9 +291,9 @@ wsl -d cnquant --user cnquant -e bash -c /home/cnquant/cqall/run_cqall.sh
 http:localhost:8060/cqall
 ```
 
-# Installation with pip and execution without Docker or WSL2
+# Alternative ways to install and run CnQuant apps
 
-For installation and execution without Docker or WSL2, please refer to following repositories
+Alternative way of installation and running CnQuant apps are described in separately in the apps' repositories
 
 - [CQmanager](https://github.com/neuropathbasel-pub/CQmanager)
 - [CQcalc](https://github.com/neuropathbasel-pub/CQcalc)
