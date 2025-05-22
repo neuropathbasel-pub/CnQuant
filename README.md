@@ -8,6 +8,12 @@
     - [Manifests, reference IDAT pair, and data annotations download](#manifests-reference-IDAT-pair-and-data-annotations-download)
 - [Execution with CQmanager](#execution-with-cqmanager)
 - [Running CnQuant apps in WSL2](#running-CnQuant-apps-in-wsl2)
+    - [WSL2 image preparation](#wsl2-image-preparation)
+    - [CN analysis with CQcalc](#cn-analysis-with-cqcalc)
+    - [CN Summary Plots with CQall_plotter](#cn-summary-plots-with-cqall_plotter)
+    - [Per-case results inspection with CQcase](#per-case-results-inspection-with-cqcase)
+    - [CN Summary Plots inspection with CQall](#cn-summary-plots-inspection-with-cqall)
+- [Detailed instructions for all CnQuant applications](#detailed-instructions-for-all-cnquant-applications)
 
 # Disclaimer
 
@@ -175,7 +181,7 @@ Instructions on how to use CQmanager for automated IDAT pairs analysis are in [C
 
 # Running CnQuant apps in WSL2
 
-## Prepare WSL2 image
+## WSL2 image preparation
 
 >[!NOTE]
 >All following commands are to be executed in powershell.</br>
@@ -208,7 +214,7 @@ Replace C:\path\to\store\wsl\images with where you want to store the WSL2 image 
 ```
 Add Sentrix IDs in the Sentrix_id column and references in the MC column.
 
-## Analyse data with CQcalc
+## CN analysis with CQcalc
 
 1. Analyse IDAT pairs in WSL2 image:
 with default settings:
@@ -228,7 +234,7 @@ The CQcalc code allows to exceed those values but the execution might crash.
 
 @Jürgen: I can also limit the accepted parameters by CQcalc with an error message for the user
 
-## Prepare CN Summary Plots with CQall_plotter
+## CN Summary Plots with CQall_plotter
 
 1. Update the data annotations in:
 ```
@@ -251,7 +257,10 @@ where:
 --min_sentrix_ids_per_plot defines minimum number of samples per methylation class to generate a plot.
 
 
-## Inspect single-case results with CQcase
+## Per-case results inspection with CQcase
+
+>[!NOTE]
+>The port to access CQcase and CQall in the browser depends on the port set up in the .env file
 
 1. Start CnQuant WSL2 image and CQcase:
 ``` powershell
@@ -260,7 +269,11 @@ wsl -d cnquant --user cnquant -e bash -c /home/cnquant/cqcase/run_cqcase.sh
 2. Access CQcase in your browser
 http:localhost:8062/cqcase
 
-## Inspect CN Summary Plots with CQall
+## CN Summary Plots inspection with CQall
+
+>[!NOTE]
+>The port to access CQcase and CQall in the browser depends on the port set up in the .env file
+
 1. Start CnQuant WSL2 image and CQall:
 ``` powershell
 wsl -d cnquant --user cnquant -e bash -c /home/cnquant/cqall/run_cqall.sh
