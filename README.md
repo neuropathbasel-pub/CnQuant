@@ -58,6 +58,7 @@ neuropathologiebasel/cqcase:latest \
 neuropathologiebasel/cqall:latest \
 neuropathologiebasel/cqall_plotter:latest
 ```
+
 Another option to run the CnQuant apps is WSL2 subsystem for Windows, described in [Running CnQuant apps in WSL2](#running-cnquant-apps-in-wsl2).
 
 The last option (not recommended) is to install the applications with pip
