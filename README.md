@@ -239,8 +239,6 @@ min_probes_per_bin: minimum 10, maximum 50
 
 The CQcalc code allows to exceed those values but the execution might crash.
 
-@Jürgen: I can also limit the accepted parameters by CQcalc with an error message for the user
-
 ## CN Summary Plots with CQall_plotter
 
 1. Update the data annotations in:
