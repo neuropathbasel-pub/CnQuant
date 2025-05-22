@@ -196,8 +196,15 @@ Open PowerShell and run:
 wsl --import cnquant windows_path_where_you_wish_to_keep_WSL_images windows_path_to_where_you_have_the_compressed_image\cnquant.tar
 ```
 
-Replace C:\path\to\store\wsl\images with where you want to store the WSL2 image and C:\path\to\cnquant.tar with the path to the downloaded image.
-
+Replace
+```
+C:\path\to\store\wsl\images
+```
+with where you want to store the WSL2 image and  
+```
+C:\path\to\cnquant.tar
+```
+with the path to the downloaded image.
 >[!TIP]
 >You may change settings for CnQuant apps in WSL2 by modifying /home/cnquant/.env file
 
@@ -251,7 +258,7 @@ Start CnQCQall_plotter in WSL2 image with modified settings:
 ``` powershell
 wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqall_plotter/run_cqall_plotter.sh --preprocessing_method illumina --min_sentrix_ids_per_plot 5 --methylation_classes AML,GBM_RTKII"
 ```
-where:
+where:</br>
 --methylation_classes takes comma-separated list of methylation classes that are available in data_annotation.csv file in diagnoses directory.
 --preprocessing_method can be illumina or swan. Requires output from CQcalc.
 --min_sentrix_ids_per_plot defines minimum number of samples per methylation class to generate a plot.
