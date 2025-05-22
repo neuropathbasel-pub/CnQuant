@@ -178,7 +178,8 @@ Instructions on how to use CQmanager for automated IDAT pairs analysis are in [C
 ## Prepare WSL2 image
 
 >[!NOTE]
->All following commands are to be executed in powershell
+>All following commands are to be executed in powershell.</br>
+>WSL2 has to be installed on your system.
 
 Steps:
 1. Download the [WSL2 image](https://epidip.usb.ch/cnquant/cnquant.tar)
