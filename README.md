@@ -50,13 +50,21 @@ If you do not have Docker installed on your system, proceed to Docker installati
 After the installation, ensure to carry out the post-installation steps to run the container as a non-root user.
 If you are not familiar with docker, you might be interested in [Docker Curriculum](https://docker-curriculum.com/).
 
-In case of running CnQuant applications on a server without internet access, you will need first to download all docker images and transfer them to your host machine:
+In case of running CnQuant applications on a server without internet access, you will need to download all docker images and transfer them to your host machine:
 ``` bash
 docker pull \
 neuropathologiebasel/cqcalc:latest \
 neuropathologiebasel/cqcase:latest \
 neuropathologiebasel/cqall:latest \
 neuropathologiebasel/cqall_plotter:latest
+
+docker save -o cnquant_images.tar \
+neuropathologiebasel/cqcalc:latest \
+neuropathologiebasel/cqcase:latest \
+neuropathologiebasel/cqall:latest \
+neuropathologiebasel/cqall_plotter:latest
+
+docker load -i cnquant_images.tar
 ```
 
 Another option to run the CnQuant apps is WSL2 subsystem for Windows, described in [Running CnQuant apps in WSL2](#running-cnquant-apps-in-wsl2).
