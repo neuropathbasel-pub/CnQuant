@@ -81,7 +81,7 @@ which is described separately in each of the applications repository.
 For convenience, the same .env file is used for each app.
 The .env file needs to be located in each apps' main directory or it's parent directory.
 The .env file in an application directory has precedence before the .env file in the parent's directory.
-An "example.env" file is provided in each application's directory.
+An "example.env" file is provided in each application's directory or in the parent's directory.
 Modifying .env files for WSL2 is typically not necessary.
 
 ## Environment variables
