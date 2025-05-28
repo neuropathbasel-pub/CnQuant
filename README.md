@@ -103,7 +103,7 @@ rename it to .env and adjust the paths inside the .env file.
 - cn_results_directory: directory where CNV results will be stored in compressed parquet format.
 - summary_plots_base_directory: summary plots will be stored here.
 - temp_directory: this directory will be used to store temporary files, which, during normal operation, should be automatically removed if no longer required.
-- manifests_directory: this directory will contains Illumina manifests for array conversion and analysis
+- manifests_directory: this directory will contains cnquant manifests for array conversion and analysis
 
 **Remote server directories**
 
@@ -192,7 +192,7 @@ while the other CnQuant applications would probably run on a system with larger 
 ## Manifests, reference IDAT pair, and data annotations download
 
 - Download [data annotation file](https://docs.google.com/spreadsheets/d/e/2PACX-1vRhQ7Cr3aBo8W9Ne8DAehMvFRxYd395ENIW9giK2ATQ3QSrM8jA2E7xXbnW7CWKMdh0IhN0YqWn37Wr/pub?gid=0&single=true&output=csv) and [reference data annotation file](https://docs.google.com/spreadsheets/d/e/2PACX-1vRhQ7Cr3aBo8W9Ne8DAehMvFRxYd395ENIW9giK2ATQ3QSrM8jA2E7xXbnW7CWKMdh0IhN0YqWn37Wr/pub?gid=522048357&single=true&output=csv) data annotation sheets into the "diagnoses" directory specified in your .env file.
-- Download [manifests](https://epidip.usb.ch/cnquant/manifests.zip) and unzip it into the "manifests" directory specified in your .env file.
+- Download [manifest](https://epidip.usb.ch/cnquant/cnquant_manifest.parquet) into the "manifests" directory specified in your .env file.
 - Download [reference IDAT pair](https://epidip.usb.ch/cnquant/ref450K.zip) and unzip it into the IDAT directory specified in your .env file.
 
 ## Execution with CQmanager
