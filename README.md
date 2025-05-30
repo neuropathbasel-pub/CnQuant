@@ -118,26 +118,26 @@ while the remaining CnQuant are background applications intended to run on a sys
 - remote_server_summary_plots_base_directory: summary plots will be stored here on the remote server. For CQall running on a remote server via CQmanager.
 
 **CQcalc-specific settings**
-- process_inconvertible_sentrix_ids: set this to True to allow reprocessing Sentrix IDs that were previously determined to be corrupt. Default is False. Note: Depending on the amount of IDAT files present on a system, reprocessing many files can require significant amounts of time and resources.
-- check_if_idats_have_equal_size: set this to True to reject IDAT pairs with unequal file size. Default is True. Note: Valid IDAT files are typically in the same size range.
-- minimum_idat_size: set here minimum idat size in MB per file. Default is 1. Note: For more stringent filtering (many IDAT file types are larger than 1 MB) increase according to expected file size.
+
+-process_inconvertible_sentrix_ids: set this to True to allow reprocessing Sentrix IDs that were previously determined to be corrupt. Default is False. Note: Depending on the amount of IDAT files present on a system, reprocessing many files can require significant amounts of time and resources.
+-check_if_idats_have_equal_size: set this to True to reject IDAT pairs with unequal file size. Default is True. Note: Valid IDAT files are typically in the same size range.
+-minimum_idat_size: set here minimum IDAT size in MB per file. Default is 1. Note: For more stringent filtering (many IDAT file types are larger than 1 MB) increase according to expected file size.
 
 **CQall_plotter-specific settings**
 - minimal_number_of_sentrix_ids_for_summary_plot: controls minimum number of analyzed samples per summary plot. Default is 5.
 
 **Server name displayed in CQcase and CQall**
-- server_name: A string or sentence wrapped in double quotes you put here will be displayed in bottom right corner in CQcase and CQall
+- server_name: A string or sentence wrapped in double quotes you put here will be displayed in the bottom right corner in CQcase and CQall.
 
 **CQcase- and CQall-specific settings**
 - cqcase_host_app_port: port where you will be able to access CQcase. Default is 8052
 - cqall_host_app_port: port where you will be able to access CQall. Default is 8050
-- email_notification_port: Port for SMTP server for email notifications. Default is 587
+- email_notification_port: The port for SMTP server for email notifications. Default is 587
 - workers: Number of workers for [Gunicorn](https://gunicorn.org/) for running CQcase and CQall. Default is 10, suitable for multiprocessor systems. If you are running the apps on a desktop PC for a single user only, set it to 1.
 - timeout: Timeout for caching. Default is 300. Unit is seconds.
-- REDIS_HOST=localhost: host for [Redis](https://redis.io/) caching. Default is localhost
+- REDIS_HOST: host for [Redis](https://redis.io/) caching. Default is localhost.
 - REDIS_PORT: Port for Redis caching. Default is 6379.
 - maximum_number_of_genes_to_plot: Maximum number of additional genes plotted in CQcase and CQall. Default is 600. Note that plotting too many genes will make the plot quite unreadable and will slow down the application.
-
 - CACHING_DB_cqcase: Redis caching database number for CQcase. Default is.
 - CACHING_DB_cqall: Redis caching database number for CQall. Default is 1.
 
@@ -155,14 +155,13 @@ while the remaining CnQuant are background applications intended to run on a sys
 - CQ_manager_batch_timeout: Seconds after CQmanager starts, a container that did not reach set batch size. Default is 300.
 - max_number_of_cqcalc_containers: Maximum number of CQcalc containers running in parallel. Default is 10. Depends on your available RAM and CPUs.
 - run_CQviewers_on_remote_server: Set it to True if you wish to run CQcase and CQall on a remote server. Default is False. Remember that you will need to set up a ssh key and provide username and host. Docker needs to be installed on the host.
-- CQviewers_host: Your remote server host name or ip.
+- CQviewers_host: Your remote server host name or IP.
 - CQviewers_user: Your remote server username. This user needs to be able to run Docker containers.
-- CQall_container_name: Name for CQall container for Docker naming purposes. Default is cqall.
+- CQall_container_name: Name for CQall container for Docker container naming purposes. Default is cqall.
 - CQcase_container_name: Name for CQcase container for Docker naming purposes. Default is cqcase.
 - cnquant_redis_name: Name for Redis container for Docker naming purposes. Default is cnquant_redis.
 - CQviewers_docker_network_name: Name for the network that will be created for CQcase and CQall. Default is cnquant_network.
 - initiate_cqcase_and_cqall_on_startup: Set it to True if you wish to start CQcase and CQall with Redis containers on CQmanager startup. Default is False.
-
 - remote_user_id: remote user ID for executing containers with. Required for file permissions.
 - remote_group_id: remote group ID for executing containers with. Required for file permissions.
 
@@ -172,8 +171,8 @@ while the remaining CnQuant are background applications intended to run on a sys
 - crash_email_sender_password: Application password for sender's email address. Wrap it in double quotes.
 
 **Data annotation URLs**
-- DATA_ANNOTATION_SHEET: URL for google sheet csv output for annotations
-- REFERENCE_DATA_ANNOTATION_SHEET: URL for google sheet csv output for reference annotations
+- DATA_ANNOTATION_SHEET: URL for google sheet csv output for annotations.
+- REFERENCE_DATA_ANNOTATION_SHEET: URL for google sheet csv output for reference annotations.
 - URL Example: https://docs.google.com/spreadsheets/d/e/2PACX-1vRhQ7Cr3aBo8W9Ne8DAehMvFRxYd395ENIW9giK2ATQ3QSrM8jA2E7xXbnW7CWKMdh0IhN0YqWn37Wr/pub?gid=0&single=true&output=csv
 
 
