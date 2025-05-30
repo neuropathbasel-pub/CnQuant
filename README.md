@@ -8,11 +8,6 @@
     - [Manifests, reference IDAT pair, and data annotations download](#manifests-reference-IDAT-pair-and-data-annotations-download)
 - [Execution with CQmanager](#execution-with-cqmanager)
 - [Running CnQuant apps in WSL2](#running-CnQuant-apps-in-wsl2)
-    - [WSL2 image preparation](#wsl2-image-preparation)
-    - [CN analysis with CQcalc](#cn-analysis-with-cqcalc)
-    - [CN Summary Plots with CQall_plotter](#cn-summary-plots-with-cqall_plotter)
-    - [Per-case results inspection with CQcase](#per-case-results-inspection-with-cqcase)
-    - [CN Summary Plots inspection with CQall](#cn-summary-plots-inspection-with-cqall)
 - [Alternative ways to install and run CnQuant apps](#alternative-ways-to-install-and-run-cnquant-apps)
 
 # Disclaimer
@@ -88,7 +83,7 @@ Adapting .env files for WSL2 is typically not necessary.
 
 Before running any of the 5 applications (not needed for WSL2),
 you will need to create the following directories and define them in your .env file.
-Download [example.env](https://github.com/neuropathbasel-pub/CnQuant/blob/main/example.env) into your environment directory or in it's partent directory where you wish to install one of the CnQuant apps,
+Download [example.env](https://github.com/neuropathbasel-pub/CnQuant/blob/main/example.env) into your environment directory or in it's parent directory where you wish to install one of the CnQuant apps,
 rename it to .env and adjust the paths inside the .env file.
 
 >[!Note]
@@ -96,7 +91,7 @@ rename it to .env and adjust the paths inside the .env file.
 
 **Local directories**
 - log_directory: log files in plain text format will be saved here.
-- idat_directory: contains raw IDAT file pairs (*_Red.idat and *_Grn-idat). Subfolders will not recursively be checked for IDAT pairs.
+- idat_directory: contains raw IDAT file pairs (*_Red.idat and *_Grn-idat). Subdirectories will not recursively be checked for IDAT pairs.
 - reference_directory: preprocessed reference methylation data will be stored here in a binary format.
 - diagnoses_directory: has to contain two comma-separated value (CSV) files: data_annotation.csv with two headers, Sentrix_id and MC. data_annotation.csv contains annotated Sentrix IDs and their user-defined methylation classes. The file reference_data_annotation.csv has the same structure.
 - cn_results_directory: CNV results will be stored here in Parquet format.

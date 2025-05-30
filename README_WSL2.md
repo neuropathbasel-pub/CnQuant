@@ -1,4 +1,10 @@
-## WSL2 image preparation
+- [WSL2 image preparation](#wsl2-image-preparation)
+- [CN analysis with CQcalc](#cn-analysis-with-cqcalc)
+- [CN Summary Plots with CQall_plotter](#cn-summary-plots-with-cqall_plotter)
+- [Per-case results inspection with CQcase](#per-case-results-inspection-with-cqcase)
+- [CN Summary Plots inspection with CQall](#cn-summary-plots-inspection-with-cqall)
+
+# WSL2 image preparation
 
 >[!NOTE]
 >All following commands are to be executed in PowerShell.</br>
@@ -40,7 +46,7 @@ with the path to the downloaded image.
 
 Add Sentrix IDs in the Sentrix_id column and references in the MC column.
 
-## CN analysis with CQcalc
+# CN analysis with CQcalc
 
 1. Analyze IDAT pairs in WSL2 image:</br>
 with default settings:</br>
@@ -58,7 +64,7 @@ min_probes_per_bin: minimum 10, maximum 50
 
 The CQcalc code allows to exceed those values but the execution might crash.
 
-## CN Summary Plots with CQall_plotter
+# CN Summary Plots with CQall_plotter
 
 1. Update the data annotations in:
 ```
@@ -82,7 +88,7 @@ where:</br>
 --min_sentrix_ids_per_plot defines minimum number of samples per methylation class to generate a plot.
 
 
-## Per-case results inspection with CQcase
+# Per-case results inspection with CQcase
 
 >[!NOTE]
 >The port to access CQcase and CQall in the browser depends on the port set up in the .env file
@@ -95,7 +101,7 @@ wsl -d cnquant --user cnquant -e bash -c /home/cnquant/cqcase/run_cqcase.sh
 ```
 http:localhost:8062/cqcase
 ```
-## CN Summary Plots inspection with CQall
+# CN Summary Plots inspection with CQall
 
 >[!NOTE]
 >The port to access CQcase and CQall in the browser depends on the port set up in the .env file
