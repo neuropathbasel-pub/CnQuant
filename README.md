@@ -113,7 +113,6 @@ A remote server could be a resource-limited system in a DMZ to provide public or
 while the remaining CnQuant are background applications intended to run on a system with larger resources.
 
 - remote_server_log_directory: log files from apps running on a remote server via CQmanager in plain text form will be saved here.
-- remote_server_reference_directory: directory on a remote server, where preprocessed reference methylation data will be stored in binary format. For apps running on a remote server via CQmanager.
 - remote_server_diagnoses_directory: directory on a remote server which has to contain two csv files: data_annotation.csv with two headers Sentrix_id and MC, which will contain annotated Sentrix IDs and their annotated tumor types. The second file, reference_data_annotation.csv, has the same structure with Sentrix IDs annotated as "reference".
 - remote_server_cn_results_directory: directory on remote directory where CNV results will be stored in compressed parquet format. For CQcase running on a remote server via CQmanager.
 - remote_server_summary_plots_base_directory: summary plots will be stored here on the remote server. For CQall running on a remote server via CQmanager.
