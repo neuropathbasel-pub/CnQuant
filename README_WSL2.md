@@ -1,8 +1,9 @@
 ## WSL2 image preparation
 
 >[!NOTE]
->All following commands are to be executed in powershell.</br>
->WSL2 has to be installed on your system.
+>All following commands are to be executed in PowerShell.</br>
+>WSL2 has to be installed on your system.</br>
+>Here is a [tutorial](https://www.windowscentral.com/how-install-wsl2-windows-10).
 
 Steps:
 1. Download the [WSL2 image](https://epidip.usb.ch/cnquant/cnquant.tar)
@@ -22,12 +23,12 @@ with where you want to store the WSL2 image and
 C:\path\to\cnquant.tar
 ```
 with the path to the downloaded image.
+
 >[!TIP]
->You may change settings for CnQuant apps in WSL2 by modifying /home/cnquant/.env file
+>You may change settings for CnQuant apps in WSL2 by modifying /home/cnquant/.env file.
 
 3. Copy Sentrix ID pairs:
-- Place your Sentrix ID pairs and reference IDAT files in the same directory.
-- Copy them to:
+- Place your Sentrix ID pairs and reference IDAT files in:.
 ```
 \\wsl.localhost\cnquant\home\cnquant\data\idat
 ```
@@ -36,12 +37,13 @@ with the path to the downloaded image.
 ```
 \\wsl.localhost\cnquant\home\cnquant\data\diagnoses\reference_data_annotation.csv
 ```
+
 Add Sentrix IDs in the Sentrix_id column and references in the MC column.
 
 ## CN analysis with CQcalc
 
-1. Analyse IDAT pairs in WSL2 image:
-with default settings:
+1. Analyze IDAT pairs in WSL2 image:</br>
+with default settings:</br>
 ``` powershell
 wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqcalc/run_cqcalc.sh --sentrix_ids Sentix_ID1,Sentrix_ID2"
 ```
@@ -50,8 +52,8 @@ or with custom bin size, minimum probes per bin, or preprocessing method
 wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqcalc/run_cqcalc.sh --preprocessing_method illumina --bin_size 50000 --min_probes_per_bin 20 --sentrix_ids Sentix_ID1,Sentrix_ID2"
 ```
 
-Following minimal and maximal bin size and minimum probes per bin settings:
-bin_size: minimum 1000, maximum 100000
+Following minimal and maximal bin size and minimum probes per bin settings:</br>
+bin_size: minimum 1000, maximum 100000</br>
 min_probes_per_bin: minimum 10, maximum 50
 
 The CQcalc code allows to exceed those values but the execution might crash.
@@ -62,14 +64,15 @@ The CQcalc code allows to exceed those values but the execution might crash.
 ```
 \\wsl.localhost\cnquant\home\cnquant\data\diagnoses\data_annotation.csv
 ```
+
 Add Sentrix IDs in the Sentrix_id column and methylation class in the MC column.
 
-2. Start CnQCQall_plotter in WSL2 image with default settings:
+2. Start CQall_plotter in WSL2 image with default settings:
 ``` powershell
 wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqall_plotter/run_cqall_plotter.sh"
 ```
 or
-Start CnQCQall_plotter in WSL2 image with modified settings:
+Start CQall_plotter in WSL2 image with modified settings:
 ``` powershell
 wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqall_plotter/run_cqall_plotter.sh --preprocessing_method illumina --min_sentrix_ids_per_plot 5 --methylation_classes AML,GBM_RTKII"
 ```
