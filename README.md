@@ -1,6 +1,6 @@
 # Table of contents
 
-- [Disclamer](#disclamer)
+- [Disclaimer](#disclamer)
 - [Introduction to the app](#introduction-to-the-app)
 - [Requirements](#requirements)
     - [Directory structure and data annotation files](#directory-structure-and-data-annotation-files)
@@ -19,12 +19,12 @@
 
 Implementation of this software in a diagnostic setting occurs in the sole responsibility of the treating physician.
 Usage of this software occurs at the risk of the user. The authors may not be held liable for any damage (including hardware) this software might cause.
-Use is explicitly restricted to academic and non-for-profit organizations.
+Use is explicitly restricted to academic and not-for-profit organizations.
 
 # Introduction
 
-CnQuant, is a lightweight stack of 5 applications designed to streamline the analysis of Illumina Infinium Methylation array data through a web browser
-CnQuant consists of the following programs (stored in separate repositories) for CNV calculation and visualization:
+CnQuant, is a lightweight stack of 5 applications designed to streamline the analysis of Illumina Infinium Methylation array data
+through a web browser CnQuant consists of the following programs (stored in separate repositories) for CNV calculation and visualization:
 
 - [CQmanager](https://github.com/neuropathbasel-pub/CQmanager)
 - [CQcalc](https://github.com/neuropathbasel-pub/CQcalc)
@@ -32,25 +32,24 @@ CnQuant consists of the following programs (stored in separate repositories) for
 - [CQcase](https://github.com/neuropathbasel-pub/CQcase)
 - [CQall](https://github.com/neuropathbasel-pub/CQall)
 
-CnQuant seamlessly integrates raw data from multiple kit versions (450k, EPICv1, and EPICv2),
-merging it into an Illumina Infinium Methylation array 450k format for consistent downstream processing.
-Leveraging this harmonized data, [CQcalc](https://github.com/neuropathbasel-pub/CQcalc) computes copy number variants (CNVs)
+CnQuant seamlessly unifies raw data from multiple kit versions (450k, EPICv1, and EPICv2) by merging it into an Illumina Infinium Methylation array 450k format for downstream processing.
+Based on the harmonized data, [CQcalc](https://github.com/neuropathbasel-pub/CQcalc) computes copy number variants (CNVs)
 and [CQcase](https://github.com/neuropathbasel-pub/CQcase) visualizes these results for every processed IDAT pair,
-offering clinicians clear, actionable insights.
-Beyond case-based CNV analysis, [CQall plotter](https://github.com/neuropathbasel-pub/CQall_plotter)
-generates tumor entity-specific summary plots that highlight recurrent CNV patterns.
-The summary plots are visualized with [CQall](https://github.com/neuropathbasel-pub/CQall).
-In sum, CnQuant simplifies complex workflows, delivering robust results in an intuitive package.
+displaying potentially actionable targets in point-of-care settings.
+Beyond case-specific CNV analysis, the [CQall plotter](https://github.com/neuropathbasel-pub/CQall_plotter) plotter computes tumor entity-specific summary plots from case collections,
+which highlights recurrent CNV patterns.
+Summary plots are visualized with [CQall](https://github.com/neuropathbasel-pub/CQall).
+In sum, CnQuant simplifies complex workflows, delivering robust results in short time in an intuitive package.
 CnQuant is optimized for low-latency data visualization and inspection.
-The CNV data is pre-analyzed on a local server and stored in parquet files for rapid viewing and examination through the web-based frontends [CQcase](https://github.com/neuropathbasel-pub/CQcase) and [CQall](https://github.com/neuropathbasel-pub/CQall).
+Microarray data are pre-analyzed on a local server and stored in Parquet files for rapid viewing and examination through the web-based frontends [CQcase](https://github.com/neuropathbasel-pub/CQcase) and [CQall](https://github.com/neuropathbasel-pub/CQall).
 
 # Requirements
 
-If you do not have Docker installed on your system, proceed to Docker installation documentation for your platform.</br>
-After the installation, ensure to carry out the post-installation steps to run the container as a non-root user.
-If you are not familiar with docker, you might be interested in [Docker Curriculum](https://docker-curriculum.com/).
+A Docker installation is required.
+Ensure to carry out the Docker post-installation steps to run the container as a non-root user.
+If new to Docker, the [Docker Curriculum](https://docker-curriculum.com/) might be helpful.
+In case of running CnQuant applications on a server without internet access, you will need to download all docker images elsewhere and transfer them to your Docker host:
 
-In case of running CnQuant applications on a server without internet access, you will need to download all docker images and transfer them to your host machine:
 ``` bash
 docker pull \
 neuropathologiebasel/cqcalc:latest \
@@ -70,19 +69,20 @@ neuropathologiebasel/cqall_plotter:latest
 docker load -i cnquant_images.tar
 ```
 
-Another option to run the CnQuant apps is WSL2 subsystem for Windows, described in [Running CnQuant apps in WSL2](#running-cnquant-apps-in-wsl2).
+A Docker alternative is  WSL2 (Windows subsystem for Linux 2), described in [Running CnQuant apps in WSL2](#running-cnquant-apps-in-wsl2).
+Primarily intended for developers or embedded systems with limited resources or CPUs other than x86_64,
+all CnQuant components can be installed from source with pip.
+Note that CnQuant depends on both Python and R, requiring R-4.3.0 (for [CQcalc](https://github.com/neuropathbasel-pub/CQcalc)) in addition to an appropriate Python environment.
+Installation instructions are described separately in each application component repository.
 
-The last option (not recommended) is to install the applications with pip
-but it will require R-4.3.0 installation with CnQuant R dependencies,
-which is described separately in each of the applications repository.
 
 ## Directory structure and data annotation files
 
 For convenience, the same .env file is used for each app.
-The .env file needs to be located in each apps' main directory or it's parent directory.
+The .env file needs to be located in each apps' main directory or its parent directory.
 The .env file in an application directory has precedence before the .env file in the parent's directory.
 An "example.env" file is provided in each application's directory or in the parent's directory.
-Modifying .env files for WSL2 is typically not necessary.
+Adapting .env files for WSL2 is typically not necessary.
 
 ## Environment variables
 
@@ -92,29 +92,27 @@ Download [example.env](https://github.com/neuropathbasel-pub/CnQuant/blob/main/e
 rename it to .env and adjust the paths inside the .env file.
 
 >[!Note]
->On some operating systems, visual file explorers (Thunar, Gnome, Explorer) do not display files starting with a "." in their filename by default.</br>
->Refer to your system's manual on how to display .env if need be.
+>Some visual file explorers (Thunar, Gnome, Explorer) do not display files starting with a "." in their filename by default and might require settings adjustment.
 
 **Local directories**
-- log_directory: log files in plain text format will be saved here
-- idat_directory: this directory contains raw IDAT file pairs (*_Red.idat and *_Grn-idat). Subfolders will not recursively be checked for IDAT pairs.
-- reference_directory: directory, where preprocessed reference methylation data will be stored in a binary format.
-- diagnoses_directory: directory which has to contain two comma-separated value (CSV) files: data_annotation.csv with two headers, Sentrix_id and MC, which will contains annotated Sentrix IDs and their user-defined methylation class. The file reference_data_annotation.csv has the same structure with Sentrix IDs annotated as "reference"
-- cn_results_directory: directory where CNV results will be stored in compressed parquet format.
+- log_directory: log files in plain text format will be saved here.
+- idat_directory: contains raw IDAT file pairs (*_Red.idat and *_Grn-idat). Subfolders will not recursively be checked for IDAT pairs.
+- reference_directory: preprocessed reference methylation data will be stored here in a binary format.
+- diagnoses_directory: has to contain two comma-separated value (CSV) files: data_annotation.csv with two headers, Sentrix_id and MC. data_annotation.csv contains annotated Sentrix IDs and their user-defined methylation classes. The file reference_data_annotation.csv has the same structure.
+- cn_results_directory: CNV results will be stored here in Parquet format.
 - summary_plots_base_directory: summary plots will be stored here.
-- temp_directory: this directory will be used to store temporary files, which, during normal operation, should be automatically removed if no longer required.
-- manifests_directory: this directory will contains cnquant manifests for array conversion and analysis
+- temp_directory: used to store temporary files, which, during normal operation, should be automatically removed if no longer required.
+- manifests_directory: contains Illumina manifest files for array conversion and analysis
 
 **Remote server directories**
 
-The following remote directories are for running CQcase and CQall on a remote server.
-CQmanager runs CQcalc on the same server where you run CQmanager.
+The following remote directories are required for running CQcase and CQall on a remote server.
+CQmanager launches CQcalc on the same server where you run CQmanager.
 CQmanager does not sync data.
-The remote server could be a resource-limited system in a DMZ to provide public or institutional web interface access,
-while the other CnQuant applications would probably run on a system with larger resources.
+A remote server could be a resource-limited system in a DMZ to provide public or institutional web interface access (CQcase and CQall),
+while the remaining CnQuant are background applications intended to run on a system with larger resources.
 
 - remote_server_log_directory: log files from apps running on a remote server via CQmanager in plain text form will be saved here.
-- remote_server_idat_directory: this directory on a remote server must contain raw IDAT file pairs (Red and Green). Subfolders will not be checked for existing IDATs. For apps running on a remote server via CQmanager.
 - remote_server_reference_directory: directory on a remote server, where preprocessed reference methylation data will be stored in binary format. For apps running on a remote server via CQmanager.
 - remote_server_diagnoses_directory: directory on a remote server which has to contain two csv files: data_annotation.csv with two headers Sentrix_id and MC, which will contain annotated Sentrix IDs and their annotated tumor types. The second file, reference_data_annotation.csv, has the same structure with Sentrix IDs annotated as "reference".
 - remote_server_cn_results_directory: directory on remote directory where CNV results will be stored in compressed parquet format. For CQcase running on a remote server via CQmanager.
