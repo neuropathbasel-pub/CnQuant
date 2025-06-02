@@ -188,6 +188,10 @@ while the remaining CnQuant are background applications intended to run on a sys
 
 ## Execution with CQmanager
 
+>[!Note]
+>If you are using Docker Desktop, you might need to make the host directories available to Docker containers, as set up in .env file.</br>
+>You can find these options in Docker Desktop Settings -> Resources -> File sharing -> Virtual file shares.
+
 Instructions on how to use CQmanager for running CnQuant applications are in [CQmanager repository](https://github.com/neuropathbasel-pub/CQmanager).
 
 # Running CnQuant apps in WSL2
