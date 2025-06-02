@@ -185,6 +185,7 @@ while the remaining CnQuant are background applications intended to run on a sys
 - Download [data annotation file](https://docs.google.com/spreadsheets/d/e/2PACX-1vRhQ7Cr3aBo8W9Ne8DAehMvFRxYd395ENIW9giK2ATQ3QSrM8jA2E7xXbnW7CWKMdh0IhN0YqWn37Wr/pub?gid=0&single=true&output=csv) and [reference data annotation file](https://docs.google.com/spreadsheets/d/e/2PACX-1vRhQ7Cr3aBo8W9Ne8DAehMvFRxYd395ENIW9giK2ATQ3QSrM8jA2E7xXbnW7CWKMdh0IhN0YqWn37Wr/pub?gid=522048357&single=true&output=csv) data annotation sheets into the "diagnoses" directory specified in your .env file.
 - Download [manifest](https://epidip.usb.ch/cnquant/cnquant_manifest.parquet) into the "manifests" directory specified in your .env file.
 - Download [gaps.csv.gz](https://epidip.usb.ch/cnquant/gaps.csv.gz) into the "manifests" directory specified in your .env file.
+- Download [probes_in_genes_coordinate_ranges.csv.gz](https://epidip.usb.ch/cnquant/probes_in_genes_coordinate_ranges.csv.gz) into the "manifests" directory specified in your .env file.
 - Download [reference IDAT pair](https://epidip.usb.ch/cnquant/ref450K.zip) and unzip it into the IDAT directory specified in your .env file.
 
 ## Execution with CQmanager
