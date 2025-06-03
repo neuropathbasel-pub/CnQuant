@@ -1,6 +1,6 @@
 # Table of contents
 
-- [Disclamer](#disclamer)
+- [Disclaimer](#disclamer)
 - [Introduction to the app](#introduction-to-the-app)
 - [Requirements](#requirements)
     - [Directory structure and data annotation files](#directory-structure-and-data-annotation-files)
@@ -8,23 +8,18 @@
     - [Manifests, reference IDAT pair, and data annotations download](#manifests-reference-IDAT-pair-and-data-annotations-download)
 - [Execution with CQmanager](#execution-with-cqmanager)
 - [Running CnQuant apps in WSL2](#running-CnQuant-apps-in-wsl2)
-    - [WSL2 image preparation](#wsl2-image-preparation)
-    - [CN analysis with CQcalc](#cn-analysis-with-cqcalc)
-    - [CN Summary Plots with CQall_plotter](#cn-summary-plots-with-cqall_plotter)
-    - [Per-case results inspection with CQcase](#per-case-results-inspection-with-cqcase)
-    - [CN Summary Plots inspection with CQall](#cn-summary-plots-inspection-with-cqall)
 - [Alternative ways to install and run CnQuant apps](#alternative-ways-to-install-and-run-cnquant-apps)
 
 # Disclaimer
 
 Implementation of this software in a diagnostic setting occurs in the sole responsibility of the treating physician.
 Usage of this software occurs at the risk of the user. The authors may not be held liable for any damage (including hardware) this software might cause.
-Use is explicitly restricted to academic and non-for-profit organizations.
+Use is explicitly restricted to academic and not-for-profit organizations.
 
 # Introduction
 
-CnQuant, is a lightweight stack of 5 applications designed to streamline the analysis of Illumina Infinium Methylation array data through a web browser
-CnQuant consists of the following programs (stored in separate repositories) for CNV calculation and visualization:
+CnQuant, is a lightweight stack of 5 applications designed to streamline the analysis of Illumina Infinium Methylation array data
+through a web browser CnQuant consists of the following programs (stored in separate repositories) for CNV calculation and visualization:
 
 - [CQmanager](https://github.com/neuropathbasel-pub/CQmanager)
 - [CQcalc](https://github.com/neuropathbasel-pub/CQcalc)
@@ -32,25 +27,24 @@ CnQuant consists of the following programs (stored in separate repositories) for
 - [CQcase](https://github.com/neuropathbasel-pub/CQcase)
 - [CQall](https://github.com/neuropathbasel-pub/CQall)
 
-CnQuant seamlessly integrates raw data from multiple kit versions (450k, EPICv1, and EPICv2),
-merging it into an Illumina Infinium Methylation array 450k format for consistent downstream processing.
-Leveraging this harmonized data, [CQcalc](https://github.com/neuropathbasel-pub/CQcalc) computes copy number variants (CNVs)
+CnQuant seamlessly unifies raw data from multiple kit versions (450k, EPICv1, and EPICv2) by merging it into an Illumina Infinium Methylation array 450k format for downstream processing.
+Based on the harmonized data, [CQcalc](https://github.com/neuropathbasel-pub/CQcalc) computes copy number variants (CNVs)
 and [CQcase](https://github.com/neuropathbasel-pub/CQcase) visualizes these results for every processed IDAT pair,
-offering clinicians clear, actionable insights.
-Beyond case-based CNV analysis, [CQall plotter](https://github.com/neuropathbasel-pub/CQall_plotter)
-generates tumor entity-specific summary plots that highlight recurrent CNV patterns.
-The summary plots are visualized with [CQall](https://github.com/neuropathbasel-pub/CQall).
-In sum, CnQuant simplifies complex workflows, delivering robust results in an intuitive package.
+displaying potentially actionable targets in point-of-care settings.
+Beyond case-specific CNV analysis, the [CQall plotter](https://github.com/neuropathbasel-pub/CQall_plotter) plotter computes tumor entity-specific summary plots from case collections,
+which highlights recurrent CNV patterns.
+Summary plots are visualized with [CQall](https://github.com/neuropathbasel-pub/CQall).
+In sum, CnQuant simplifies complex workflows, delivering robust results in short time in an intuitive package.
 CnQuant is optimized for low-latency data visualization and inspection.
-The CNV data is pre-analyzed on a local server and stored in parquet files for rapid viewing and examination through the web-based frontends [CQcase](https://github.com/neuropathbasel-pub/CQcase) and [CQall](https://github.com/neuropathbasel-pub/CQall).
+Microarray data are pre-analyzed on a local server and stored in Parquet files for rapid viewing and examination through the web-based frontends [CQcase](https://github.com/neuropathbasel-pub/CQcase) and [CQall](https://github.com/neuropathbasel-pub/CQall).
 
 # Requirements
 
-If you do not have Docker installed on your system, proceed to Docker installation documentation for your platform.</br>
-After the installation, ensure to carry out the post-installation steps to run the container as a non-root user.
-If you are not familiar with docker, you might be interested in [Docker Curriculum](https://docker-curriculum.com/).
+A Docker installation is required.
+Ensure to carry out the Docker post-installation steps to run the container as a non-root user.
+If new to Docker, the [Docker Curriculum](https://docker-curriculum.com/) might be helpful.
+In case of running CnQuant applications on a server without internet access, you will need to download all docker images elsewhere and transfer them to your Docker host:
 
-In case of running CnQuant applications on a server without internet access, you will need to download all docker images and transfer them to your host machine:
 ``` bash
 docker pull \
 neuropathologiebasel/cqcalc:latest \
@@ -70,77 +64,75 @@ neuropathologiebasel/cqall_plotter:latest
 docker load -i cnquant_images.tar
 ```
 
-Another option to run the CnQuant apps is WSL2 subsystem for Windows, described in [Running CnQuant apps in WSL2](#running-cnquant-apps-in-wsl2).
+A Docker alternative is  WSL2 (Windows subsystem for Linux 2), described in [Running CnQuant apps in WSL2](#running-cnquant-apps-in-wsl2).
+Primarily intended for developers or embedded systems with limited resources or CPUs other than x86_64,
+all CnQuant components can be installed from source with pip.
+Note that CnQuant depends on both Python and R, requiring R-4.3.0 (for [CQcalc](https://github.com/neuropathbasel-pub/CQcalc)) in addition to an appropriate Python environment.
+Installation instructions are described separately in each application component repository.
 
-The last option (not recommended) is to install the applications with pip
-but it will require R-4.3.0 installation with CnQuant R dependencies,
-which is described separately in each of the applications repository.
 
 ## Directory structure and data annotation files
 
 For convenience, the same .env file is used for each app.
-The .env file needs to be located in each apps' main directory or it's parent directory.
+The .env file needs to be located in each apps' main directory or its parent directory.
 The .env file in an application directory has precedence before the .env file in the parent's directory.
 An "example.env" file is provided in each application's directory or in the parent's directory.
-Modifying .env files for WSL2 is typically not necessary.
+Adapting .env files for WSL2 is typically not necessary.
 
 ## Environment variables
 
 Before running any of the 5 applications (not needed for WSL2),
 you will need to create the following directories and define them in your .env file.
-Download [example.env](https://github.com/neuropathbasel-pub/CnQuant/blob/main/example.env) into your environment directory or in it's partent directory where you wish to install one of the CnQuant apps,
+Download [example.env](https://github.com/neuropathbasel-pub/CnQuant/blob/main/example.env) into your environment directory or in it's parent directory where you wish to install one of the CnQuant apps,
 rename it to .env and adjust the paths inside the .env file.
 
 >[!Note]
->On some operating systems, visual file explorers (Thunar, Gnome, Explorer) do not display files starting with a "." in their filename by default.</br>
->Refer to your system's manual on how to display .env if need be.
+>Some visual file explorers (Thunar, Gnome, Explorer) do not display files starting with a "." in their filename by default and might require settings adjustment.
 
 **Local directories**
-- log_directory: log files in plain text format will be saved here
-- idat_directory: this directory contains raw IDAT file pairs (*_Red.idat and *_Grn-idat). Subfolders will not recursively be checked for IDAT pairs.
-- reference_directory: directory, where preprocessed reference methylation data will be stored in a binary format.
-- diagnoses_directory: directory which has to contain two comma-separated value (CSV) files: data_annotation.csv with two headers, Sentrix_id and MC, which will contains annotated Sentrix IDs and their user-defined methylation class. The file reference_data_annotation.csv has the same structure with Sentrix IDs annotated as "reference"
-- cn_results_directory: directory where CNV results will be stored in compressed parquet format.
+- log_directory: log files in plain text format will be saved here.
+- idat_directory: contains raw IDAT file pairs (*_Red.idat and *_Grn-idat). Subdirectories will not recursively be checked for IDAT pairs.
+- reference_directory: preprocessed reference methylation data will be stored here in a binary format.
+- diagnoses_directory: has to contain two comma-separated value (CSV) files: data_annotation.csv with two headers, Sentrix_id and MC. data_annotation.csv contains annotated Sentrix IDs and their user-defined methylation classes. The file reference_data_annotation.csv has the same structure.
+- cn_results_directory: CNV results will be stored here in Parquet format.
 - summary_plots_base_directory: summary plots will be stored here.
-- temp_directory: this directory will be used to store temporary files, which, during normal operation, should be automatically removed if no longer required.
-- manifests_directory: this directory will contains cnquant manifests for array conversion and analysis
+- temp_directory: used to store temporary files, which, during normal operation, should be automatically removed if no longer required.
+- manifests_directory: contains Illumina manifest files for array conversion and analysis
 
 **Remote server directories**
 
-The following remote directories are for running CQcase and CQall on a remote server.
-CQmanager runs CQcalc on the same server where you run CQmanager.
+The following remote directories are required for running CQcase and CQall on a remote server.
+CQmanager launches CQcalc on the same server where you run CQmanager.
 CQmanager does not sync data.
-The remote server could be a resource-limited system in a DMZ to provide public or institutional web interface access,
-while the other CnQuant applications would probably run on a system with larger resources.
+A remote server could be a resource-limited system in a DMZ to provide public or institutional web interface access (CQcase and CQall),
+while the remaining CnQuant are background applications intended to run on a system with larger resources.
 
 - remote_server_log_directory: log files from apps running on a remote server via CQmanager in plain text form will be saved here.
-- remote_server_idat_directory: this directory on a remote server must contain raw IDAT file pairs (Red and Green). Subfolders will not be checked for existing IDATs. For apps running on a remote server via CQmanager.
-- remote_server_reference_directory: directory on a remote server, where preprocessed reference methylation data will be stored in binary format. For apps running on a remote server via CQmanager.
 - remote_server_diagnoses_directory: directory on a remote server which has to contain two csv files: data_annotation.csv with two headers Sentrix_id and MC, which will contain annotated Sentrix IDs and their annotated tumor types. The second file, reference_data_annotation.csv, has the same structure with Sentrix IDs annotated as "reference".
 - remote_server_cn_results_directory: directory on remote directory where CNV results will be stored in compressed parquet format. For CQcase running on a remote server via CQmanager.
 - remote_server_summary_plots_base_directory: summary plots will be stored here on the remote server. For CQall running on a remote server via CQmanager.
 
 **CQcalc-specific settings**
-- process_inconvertible_sentrix_ids: set this to True to allow reprocessing Sentrix IDs that were previously determined to be corrupt. Default is False. Note: Depending on the amount of IDAT files present on a system, reprocessing many files can require significant amounts of time and resources.
-- check_if_idats_have_equal_size: set this to True to reject IDAT pairs with unequal file size. Default is True. Note: Valid IDAT files are typically in the same size range.
-- minimum_idat_size: set here minimum idat size in MB per file. Default is 1. Note: For more stringent filtering (many IDAT file types are larger than 1 MB) increase according to expected file size.
+
+-process_inconvertible_sentrix_ids: set this to True to allow reprocessing Sentrix IDs that were previously determined to be corrupt. Default is False. Note: Depending on the amount of IDAT files present on a system, reprocessing many files can require significant amounts of time and resources.
+-check_if_idats_have_equal_size: set this to True to reject IDAT pairs with unequal file size. Default is True. Note: Valid IDAT files are typically in the same size range.
+-minimum_idat_size: set here minimum IDAT size in MB per file. Default is 1. Note: For more stringent filtering (many IDAT file types are larger than 1 MB) increase according to expected file size.
 
 **CQall_plotter-specific settings**
 - minimal_number_of_sentrix_ids_for_summary_plot: controls minimum number of analyzed samples per summary plot. Default is 5.
 
 **Server name displayed in CQcase and CQall**
-- server_name: A string or sentence wrapped in double quotes you put here will be displayed in bottom right corner in CQcase and CQall
+- server_name: A string or sentence wrapped in double quotes you put here will be displayed in the bottom right corner in CQcase and CQall.
 
 **CQcase- and CQall-specific settings**
 - cqcase_host_app_port: port where you will be able to access CQcase. Default is 8052
 - cqall_host_app_port: port where you will be able to access CQall. Default is 8050
-- email_notification_port: Port for SMTP server for email notifications. Default is 587
+- email_notification_port: The port for SMTP server for email notifications. Default is 587
 - workers: Number of workers for [Gunicorn](https://gunicorn.org/) for running CQcase and CQall. Default is 10, suitable for multiprocessor systems. If you are running the apps on a desktop PC for a single user only, set it to 1.
 - timeout: Timeout for caching. Default is 300. Unit is seconds.
-- REDIS_HOST=localhost: host for [Redis](https://redis.io/) caching. Default is localhost
+- REDIS_HOST: host for [Redis](https://redis.io/) caching. Default is localhost.
 - REDIS_PORT: Port for Redis caching. Default is 6379.
 - maximum_number_of_genes_to_plot: Maximum number of additional genes plotted in CQcase and CQall. Default is 600. Note that plotting too many genes will make the plot quite unreadable and will slow down the application.
-
 - CACHING_DB_cqcase: Redis caching database number for CQcase. Default is.
 - CACHING_DB_cqall: Redis caching database number for CQall. Default is 1.
 
@@ -158,14 +150,13 @@ while the other CnQuant applications would probably run on a system with larger 
 - CQ_manager_batch_timeout: Seconds after CQmanager starts, a container that did not reach set batch size. Default is 300.
 - max_number_of_cqcalc_containers: Maximum number of CQcalc containers running in parallel. Default is 10. Depends on your available RAM and CPUs.
 - run_CQviewers_on_remote_server: Set it to True if you wish to run CQcase and CQall on a remote server. Default is False. Remember that you will need to set up a ssh key and provide username and host. Docker needs to be installed on the host.
-- CQviewers_host: Your remote server host name or ip.
+- CQviewers_host: Your remote server host name or IP.
 - CQviewers_user: Your remote server username. This user needs to be able to run Docker containers.
-- CQall_container_name: Name for CQall container for Docker naming purposes. Default is cqall.
+- CQall_container_name: Name for CQall container for Docker container naming purposes. Default is cqall.
 - CQcase_container_name: Name for CQcase container for Docker naming purposes. Default is cqcase.
 - cnquant_redis_name: Name for Redis container for Docker naming purposes. Default is cnquant_redis.
 - CQviewers_docker_network_name: Name for the network that will be created for CQcase and CQall. Default is cnquant_network.
 - initiate_cqcase_and_cqall_on_startup: Set it to True if you wish to start CQcase and CQall with Redis containers on CQmanager startup. Default is False.
-
 - remote_user_id: remote user ID for executing containers with. Required for file permissions.
 - remote_group_id: remote group ID for executing containers with. Required for file permissions.
 
@@ -175,8 +166,8 @@ while the other CnQuant applications would probably run on a system with larger 
 - crash_email_sender_password: Application password for sender's email address. Wrap it in double quotes.
 
 **Data annotation URLs**
-- DATA_ANNOTATION_SHEET: URL for google sheet csv output for annotations
-- REFERENCE_DATA_ANNOTATION_SHEET: URL for google sheet csv output for reference annotations
+- DATA_ANNOTATION_SHEET: URL for google sheet csv output for annotations.
+- REFERENCE_DATA_ANNOTATION_SHEET: URL for google sheet csv output for reference annotations.
 - URL Example: https://docs.google.com/spreadsheets/d/e/2PACX-1vRhQ7Cr3aBo8W9Ne8DAehMvFRxYd395ENIW9giK2ATQ3QSrM8jA2E7xXbnW7CWKMdh0IhN0YqWn37Wr/pub?gid=0&single=true&output=csv
 
 
@@ -193,121 +184,22 @@ while the other CnQuant applications would probably run on a system with larger 
 
 - Download [data annotation file](https://docs.google.com/spreadsheets/d/e/2PACX-1vRhQ7Cr3aBo8W9Ne8DAehMvFRxYd395ENIW9giK2ATQ3QSrM8jA2E7xXbnW7CWKMdh0IhN0YqWn37Wr/pub?gid=0&single=true&output=csv) and [reference data annotation file](https://docs.google.com/spreadsheets/d/e/2PACX-1vRhQ7Cr3aBo8W9Ne8DAehMvFRxYd395ENIW9giK2ATQ3QSrM8jA2E7xXbnW7CWKMdh0IhN0YqWn37Wr/pub?gid=522048357&single=true&output=csv) data annotation sheets into the "diagnoses" directory specified in your .env file. They have to be named data_annotation.csv and reference_data_annotation.csv, respectively.
 - Download [manifest](https://epidip.usb.ch/cnquant/cnquant_manifest.parquet) into the "manifests" directory specified in your .env file.
+- Download [gaps.csv.gz](https://epidip.usb.ch/cnquant/gaps.csv.gz) into the "manifests" directory specified in your .env file.
+- Download [probes_in_genes_coordinate_ranges.csv.gz](https://epidip.usb.ch/cnquant/probes_in_genes_coordinate_ranges.csv.gz) into the "manifests" directory specified in your .env file.
 - Download [reference IDAT pair](https://epidip.usb.ch/cnquant/ref450K.zip) and unzip it into the IDAT directory specified in your .env file.
 
 ## Execution with CQmanager
+
+>[!Note]
+>If you are using Docker Desktop, you might need to make the host directories available to Docker containers, as set up in .env file.</br>
+>You can find these options in Docker Desktop Settings -> Resources -> File sharing -> Virtual file shares.
 
 Instructions on how to use CQmanager for running CnQuant applications are in [CQmanager repository](https://github.com/neuropathbasel-pub/CQmanager).
 
 # Running CnQuant apps in WSL2
 
-## WSL2 image preparation
+For instructions about CnQuant apps execution in WSL2, please continue [here](./README_WSL2.md)
 
->[!NOTE]
->All following commands are to be executed in powershell.</br>
->WSL2 has to be installed on your system.
-
-Steps:
-1. Download the [WSL2 image](https://epidip.usb.ch/cnquant/cnquant.tar)
-2. Import the WSL2 image:
-Open PowerShell and run:
-
-``` powershell
-wsl --import cnquant windows_path_where_you_wish_to_keep_WSL_images windows_path_to_where_you_have_the_compressed_image\cnquant.tar
-```
-
-Replace
-```
-C:\path\to\store\wsl\images
-```
-with where you want to store the WSL2 image and  
-```
-C:\path\to\cnquant.tar
-```
-with the path to the downloaded image.
->[!TIP]
->You may change settings for CnQuant apps in WSL2 by modifying /home/cnquant/.env file
-
-3. Copy Sentrix ID pairs:
-- Place your Sentrix ID pairs and reference IDAT files in the same directory.
-- Copy them to:
-```
-\\wsl.localhost\cnquant\home\cnquant\data\idat
-```
-
-4. Update the reference annotations in:
-```
-\\wsl.localhost\cnquant\home\cnquant\data\diagnoses\reference_data_annotation.csv
-```
-Add Sentrix IDs in the Sentrix_id column and references in the MC column.
-
-## CN analysis with CQcalc
-
-1. Analyse IDAT pairs in WSL2 image:
-with default settings:
-``` powershell
-wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqcalc/run_cqcalc.sh --sentrix_ids Sentix_ID1,Sentrix_ID2"
-```
-or with custom bin size, minimum probes per bin, or preprocessing method
-``` powershell
-wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqcalc/run_cqcalc.sh --preprocessing_method illumina --bin_size 50000 --min_probes_per_bin 20 --sentrix_ids Sentix_ID1,Sentrix_ID2"
-```
-
-Following minimal and maximal bin size and minimum probes per bin settings:
-bin_size: minimum 1000, maximum 100000
-min_probes_per_bin: minimum 10, maximum 50
-
-The CQcalc code allows to exceed those values but the execution might crash.
-
-## CN Summary Plots with CQall_plotter
-
-1. Update the data annotations in:
-```
-\\wsl.localhost\cnquant\home\cnquant\data\diagnoses\data_annotation.csv
-```
-Add Sentrix IDs in the Sentrix_id column and methylation class in the MC column.
-
-2. Start CnQCQall_plotter in WSL2 image with default settings:
-``` powershell
-wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqall_plotter/run_cqall_plotter.sh"
-```
-or
-Start CnQCQall_plotter in WSL2 image with modified settings:
-``` powershell
-wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqall_plotter/run_cqall_plotter.sh --preprocessing_method illumina --min_sentrix_ids_per_plot 5 --methylation_classes AML,GBM_RTKII"
-```
-where:</br>
---methylation_classes takes comma-separated list of methylation classes that are available in data_annotation.csv file in diagnoses directory.</br>
---preprocessing_method can be illumina or swan. Requires output from CQcalc.</br>
---min_sentrix_ids_per_plot defines minimum number of samples per methylation class to generate a plot.
-
-
-## Per-case results inspection with CQcase
-
->[!NOTE]
->The port to access CQcase and CQall in the browser depends on the port set up in the .env file
-
-1. Start CnQuant WSL2 image and CQcase:
-``` powershell
-wsl -d cnquant --user cnquant -e bash -c /home/cnquant/cqcase/run_cqcase.sh
-```
-2. Access CQcase in your browser
-```
-http:localhost:8062/cqcase
-```
-## CN Summary Plots inspection with CQall
-
->[!NOTE]
->The port to access CQcase and CQall in the browser depends on the port set up in the .env file
-
-1. Start CnQuant WSL2 image and CQall:
-``` powershell
-wsl -d cnquant --user cnquant -e bash -c /home/cnquant/cqall/run_cqall.sh
-```
-2. Access CQcase in your browser
-```
-http:localhost:8060/cqall
-```
 
 # Alternative ways to install and run CnQuant apps
 
