@@ -157,6 +157,7 @@ while the remaining CnQuant are background applications intended to run on a sys
 - cnquant_redis_name: Name for Redis container for Docker naming purposes. Default is cnquant_redis.
 - CQviewers_docker_network_name: Name for the network that will be created for CQcase and CQall. Default is cnquant_network.
 - initiate_cqcase_and_cqall_on_startup: Set it to True if you wish to start CQcase and CQall with Redis containers on CQmanager startup. Default is False.
+- notify_if_CQcase_and_CQall_are_not_running: Set it to True if you wish to be notified per email in case CQmanager-managed CQcase or CQall are not running. Emails will not be sent if Email notification setting are not correctly set. Default is False.
 - remote_user_id: remote user ID for executing containers with. Required for file permissions.
 - remote_group_id: remote group ID for executing containers with. Required for file permissions.
 
