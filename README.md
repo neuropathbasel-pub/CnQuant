@@ -1,7 +1,7 @@
 # Table of contents
 
 - [Disclaimer](#disclamer)
-- [Introduction to the app](#introduction-to-the-app)
+- [Introduction](#Introduction)
 - [Requirements](#requirements)
     - [Directory structure and data annotation files](#directory-structure-and-data-annotation-files)
     - [Software requirements](#software-requirements)
