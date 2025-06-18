@@ -1,3 +1,5 @@
+# Table of contents
+
 - [WSL2 image preparation](#wsl2-image-preparation)
 - [CN analysis with CQcalc](#cn-analysis-with-cqcalc)
 - [CN Summary Plots with CQall_plotter](#cn-summary-plots-with-cqall_plotter)
