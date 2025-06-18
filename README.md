@@ -126,9 +126,9 @@ while the remaining CnQuant are background applications intended to run on a sys
 - server_name: A string or sentence wrapped in double quotes you put here will be displayed in the bottom right corner in CQcase and CQall.
 
 **CQcase- and CQall-specific settings**
-- cqcase_host_app_port: port where you will be able to access CQcase. Default is 8052
-- cqall_host_app_port: port where you will be able to access CQall. Default is 8050
-- email_notification_port: The port for SMTP server for email notifications. Default is 587
+- cqcase_host_app_port: port where you will be able to access CQcase. Default is 8052.
+- cqall_host_app_port: port where you will be able to access CQall. Default is 8050.
+- email_notification_port: The port for SMTP server for email notifications. Default is 587.
 - workers: Number of workers for [Gunicorn](https://gunicorn.org/) for running CQcase and CQall. Default is 10, suitable for multiprocessor systems. If you are running the apps on a desktop PC for a single user only, set it to 1.
 - timeout: Timeout for caching. Default is 300. Unit is seconds.
 - REDIS_HOST: host for [Redis](https://redis.io/) caching. Default is localhost.
@@ -143,44 +143,44 @@ while the remaining CnQuant are background applications intended to run on a sys
 - cqall_image: CQall Docker image name. Default is neuropathologiebasel/cqall:latest
 - cqall_plotter_image: CQall plotter Docker image name. Default is neuropathologiebasel/cqall_plotter:latest
 
-**CQmanager-specific settings. To control containerized CQviewers on remote server, setting up ssh keys is needed**
+**CQmanager-specific settings. To control containerized CQviewers on remote server, setting up ssh keys is required**
 - CQmanager_gunicorn_host_address: Address where to run CQmanager. Default is 127.0.0.1.
 - CQmanager_gunicorn_port: Port on which to run CQmanager. Default is 8002.
 - cnv_register_file_name: File name for a register of processed Sentrix IDs. Default is cnv_conversion_register.csv.
 - CQ_manager_batch_size: Number of Sentrix IDs per CQcalc container. Default is 100. Due to R memory leaks, it is recommended to tune this parameter moderately. Depends on the available RAM and CPU threads.
 - CQ_manager_batch_timeout: Seconds after CQmanager starts, a container that did not reach set batch size. Default is 300.
 - max_number_of_cqcalc_containers: Maximum number of CQcalc containers running in parallel. Default is 10. Depends on your available RAM and CPUs.
-- run_CQviewers_on_remote_server: Set it to True if you wish to run CQcase and CQall on a remote server. Default is False. Remember that you will need to set up a ssh key and provide username and host. Docker needs to be installed on the host.
+- run_CQviewers_on_remote_server: Set it to True if you wish to run CQcase and CQall on a remote server. Default is False. Remember that you will need to set up an ssh key and provide username and host. Docker needs to be installed on the host.
 - CQviewers_host: Your remote server host name or IP.
 - CQviewers_user: Your remote server username. This user needs to be able to run Docker containers.
-- CQall_container_name: Name for CQall container for Docker container naming purposes. Default is cqall.
+- CQall_container_name: Name for CQall container for Docker naming purposes. Default is cqall.
 - CQcase_container_name: Name for CQcase container for Docker naming purposes. Default is cqcase.
 - cnquant_redis_name: Name for Redis container for Docker naming purposes. Default is cnquant_redis.
 - CQviewers_docker_network_name: Name for the network that will be created for CQcase and CQall. Default is cnquant_network.
 - initiate_cqcase_and_cqall_on_startup: Set it to True if you wish to start CQcase and CQall with Redis containers on CQmanager startup. Default is False.
-- notify_if_CQcase_and_CQall_are_not_running: Set it to True if you wish to be notified per email in case CQmanager-managed CQcase or CQall are not running. Emails will not be sent if Email notification setting are not correctly set. Default is False.
+- notify_if_CQcase_and_CQall_are_not_running: Set it to True if you wish to be notified per email in case CQmanager-managed CQcase or CQall are not running. Emails will not be sent if Email notification setting are incorrectly set. Default is False.
 - remote_user_id: remote user ID for executing containers with. Required for file permissions.
 - remote_group_id: remote group ID for executing containers with. Required for file permissions.
 
 **Email notification settings**
-- crash_email_sender: sender email address for notification emails in case of a crash. Works with Gmail.
+- crash_email_sender: sender email address for notification emails in case of a crash. Works with Google's Gmail.
 - crash_email_receivers: Comma-separated list of email recipient email addresses for crash notifications.
 - crash_email_sender_password: Application password for sender's email address. Wrap it in double quotes.
 
 **Data annotation URLs**
-- DATA_ANNOTATION_SHEET: URL for google sheet csv output for annotations.
-- REFERENCE_DATA_ANNOTATION_SHEET: URL for google sheet csv output for reference annotations.
+- DATA_ANNOTATION_SHEET: URL for Google sheet csv output for annotations.
+- REFERENCE_DATA_ANNOTATION_SHEET: URL for Google sheet csv output for reference annotations.
 - URL Example: https://docs.google.com/spreadsheets/d/e/2PACX-1vRhQ7Cr3aBo8W9Ne8DAehMvFRxYd395ENIW9giK2ATQ3QSrM8jA2E7xXbnW7CWKMdh0IhN0YqWn37Wr/pub?gid=0&single=true&output=csv
 
 
 ## Software requirements
-- Ubuntu 20.04 or 22.04 (other distributions have not been tested)
-- Python 3.10, 3.11, or 3.12
-- Docker (recommended) or WLS2 (CQmanager is not implemented on WLS2)
+- Ubuntu 20.04 or 22.04 (other distributions have not been tested).
+- Python 3.10, 3.11, or 3.12.
+- Docker (recommended) or WLS2 (CQmanager is not implemented on WLS2).
 - Manifests from [Mepylome](https://pypi.org/project/mepylome) package.
-- IDAT pair named 'ref450k_Grn.idat' and 'ref450k_Red.idat' in the idat_directory
-- data annotation file (described below)
-- reference data annotation file (described below)
+- IDAT pair named 'ref450k_Grn.idat' and 'ref450k_Red.idat' in the idat_directory.
+- data annotation file (described below).
+- reference data annotation file (described below).
 
 ## Manifests, reference IDAT pair, and data annotations download
 
@@ -200,12 +200,11 @@ Instructions on how to use CQmanager for running CnQuant applications are in [CQ
 
 # Running CnQuant apps in WSL2
 
-For instructions about CnQuant apps execution in WSL2, please continue [here](./README_WSL2.md)
-
+For instructions about CnQuant apps execution in WSL2, please continue [here](./README_WSL2.md).
 
 # Alternative ways to install and run CnQuant apps
 
-Alternative way of installation and running CnQuant apps are described in separately in the apps' repositories
+Alternative way of installation and running CnQuant apps are described in separately in the apps' repositories:
 
 - [CQmanager](https://github.com/neuropathbasel-pub/CQmanager)
 - [CQcalc](https://github.com/neuropathbasel-pub/CQcalc)
