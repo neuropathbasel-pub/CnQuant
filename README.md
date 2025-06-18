@@ -98,7 +98,7 @@ rename it to .env and adjust the paths inside the .env file.
 - cn_results_directory: CNV results will be stored here in Parquet format.
 - summary_plots_base_directory: summary plots will be stored here.
 - temp_directory: used to store temporary files, which, during normal operation, should be automatically removed if no longer required.
-- manifests_directory: contains Illumina manifest files for array conversion and analysis
+- manifests_directory: contains Illumina manifest files for array conversion and analysis.
 
 **Remote server directories**
 
