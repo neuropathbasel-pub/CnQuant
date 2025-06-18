@@ -102,7 +102,7 @@ rename it to .env and adjust the paths inside the .env file.
 
 **Remote server directories**
 
-The following remote directories are required for running CQcase and CQall on a remote server.
+The following remote directories are required to run CQcase and CQall on a remote server.
 CQmanager launches CQcalc on the same server where you run CQmanager.
 CQmanager does not sync data.
 A remote server could be a resource-limited system in a DMZ to provide public or institutional web interface access (CQcase and CQall),
