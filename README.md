@@ -64,12 +64,11 @@ neuropathologiebasel/cqall_plotter:latest
 docker load -i cnquant_images.tar
 ```
 
-A Docker alternative is  WSL2 (Windows subsystem for Linux 2), described in [Running CnQuant apps in WSL2](#running-cnquant-apps-in-wsl2).
-Primarily intended for developers or embedded systems with limited resources or CPUs other than x86_64,
-all CnQuant components can be installed from source with pip.
-Note that CnQuant depends on both Python and R, requiring R-4.3.0 (for [CQcalc](https://github.com/neuropathbasel-pub/CQcalc)) in addition to an appropriate Python environment.
-Installation instructions are described separately in each application component repository.
-
+WSL2 (Windows Subsystem for Linux 2) is an alternative to Docker for running CnQuant apps, detailed in [Running CnQuant apps in WSL2](#running-cnquant-apps-in-wsl2).
+Primarily for developers or embedded systems with limited resources or non-x86_64 CPUs,
+CnQuant components can be installed from source using pip.
+CnQuant requires Python and R (version 4.3.0 for [CQcalc](https://github.com/neuropathbasel-pub/CQcalc)) with a compatible Python environment.
+Installation instructions are provided in each component's repository.
 
 ## Directory structure and data annotation files
 
