@@ -31,7 +31,7 @@ CnQuant seamlessly unifies raw data from multiple kit versions (450k, EPICv1, an
 Based on the harmonized data, [CQcalc](https://github.com/neuropathbasel-pub/CQcalc) computes copy number variants (CNVs)
 and [CQcase](https://github.com/neuropathbasel-pub/CQcase) visualizes these results for every processed IDAT pair,
 displaying potentially actionable targets in point-of-care settings.
-Beyond case-specific CNV analysis, the [CQall plotter](https://github.com/neuropathbasel-pub/CQall_plotter) plotter computes tumor entity-specific summary plots from case collections,
+Beyond case-specific CNV analysis, the [CQall plotter](https://github.com/neuropathbasel-pub/CQall_plotter) computes tumor entity-specific summary plots from case collections,
 which highlights recurrent CNV patterns.
 Summary plots are visualized with [CQall](https://github.com/neuropathbasel-pub/CQall).
 In sum, CnQuant simplifies complex workflows, delivering robust results in short time in an intuitive package.
