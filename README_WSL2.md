@@ -14,7 +14,7 @@
 >Here is a [tutorial](https://www.windowscentral.com/how-install-wsl2-windows-10).
 
 Steps:
-1. Download the [WSL2 image](https://epidip.usb.ch/cnquant/cnquant.tar)
+1. Download the [WSL2 image](https://epidip.usb.ch/cnquant/cnquant.tar).
 2. Import the WSL2 image:
 Open PowerShell and run:
 
@@ -36,7 +36,7 @@ with the path to the downloaded image.
 >You may change settings for CnQuant apps in WSL2 by modifying /home/cnquant/.env file.
 
 3. Copy Sentrix ID pairs:
-- Place your Sentrix ID pairs and reference IDAT files in:.
+- Place your Sentrix ID pairs and reference IDAT files in:
 ```
 \\wsl.localhost\cnquant\home\cnquant\data\idat
 ```
@@ -93,26 +93,26 @@ where:</br>
 # Per-case results inspection with CQcase
 
 >[!NOTE]
->The port to access CQcase and CQall in the browser depends on the port set up in the .env file
+>The port to access CQcase and CQall in the browser depends on the port set up in the .env file.
 
 1. Start CnQuant WSL2 image and CQcase:
 ``` powershell
 wsl -d cnquant --user cnquant -e bash -c /home/cnquant/cqcase/run_cqcase.sh
 ```
-2. Access CQcase in your browser
+2. Access CQcase in your browser:
 ```
 http:localhost:8062/cqcase
 ```
 # CN Summary Plots inspection with CQall
 
 >[!NOTE]
->The port to access CQcase and CQall in the browser depends on the port set up in the .env file
+>The port to access CQcase and CQall in the browser depends on the port set up in the .env file.
 
 1. Start CnQuant WSL2 image and CQall:
 ``` powershell
 wsl -d cnquant --user cnquant -e bash -c /home/cnquant/cqall/run_cqall.sh
 ```
-2. Access CQcase in your browser
+2. Access CQcase in your browser:
 ```
 http:localhost:8060/cqall
 ```
