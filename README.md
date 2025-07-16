@@ -146,7 +146,7 @@ while the remaining CnQuant are background applications intended to run on a sys
 **CQmanager-specific settings. To control containerized CQviewers on remote server, setting up ssh keys is required**
 - CQmanager_gunicorn_host_address: Address where to run CQmanager. Default is 127.0.0.1.
 - CQmanager_gunicorn_port: Port on which to run CQmanager. Default is 8002.
-- cnv_register_file_name: File name for a register of processed Sentrix IDs. Default is cnv_conversion_register.csv.
+- cnv_register_file_name: File name for a register of processed Sentrix IDs. Default is cnv_analysis_failure_register.csv.
 - CQ_manager_batch_size: Number of Sentrix IDs per CQcalc container. Default is 100. Due to R memory leaks, it is recommended to tune this parameter moderately. Depends on the available RAM and CPU threads.
 - CQ_manager_batch_timeout: Seconds after CQmanager starts, a container that did not reach set batch size. Default is 300.
 - max_number_of_cqcalc_containers: Maximum number of CQcalc containers running in parallel. Default is 10. Depends on your available RAM and CPUs.
