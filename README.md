@@ -93,9 +93,8 @@ rename it to .env and adjust the paths inside the .env file.
 **Local directories**
 - log_directory: log files in plain text format will be saved here.
 - idat_directory: contains raw IDAT file pairs (*_Red.idat and *_Grn-idat). Subdirectories will not recursively be checked for IDAT pairs.
-- reference_directory: preprocessed reference methylation data will be stored here in a binary format.
 - diagnoses_directory: has to contain two comma-separated value (CSV) files: data_annotation.csv with two headers, Sentrix_id and MC. data_annotation.csv contains annotated Sentrix IDs and their user-defined methylation classes. The file reference_data_annotation.csv also has two headers but with different names: Sentrix_id and array_type.
-- cn_results_directory: CNV results will be stored here in Parquet format.
+- results_directory: CNV results will be stored here in Parquet format.
 - summary_plots_base_directory: summary plots will be stored here.
 - temp_directory: used to store temporary files, which, during normal operation, should be automatically removed if no longer required.
 - manifests_directory: contains Illumina manifest files for array conversion and analysis.
@@ -110,20 +109,17 @@ while the remaining CnQuant are background applications intended to run on a sys
 
 - remote_server_log_directory: log files from apps running on a remote server via CQmanager in plain text form will be saved here.
 - remote_server_diagnoses_directory: directory on a remote server which has to contain two csv files: data_annotation.csv with two headers Sentrix_id and MC, which will contain annotated Sentrix IDs and their annotated tumor types. The second file, reference_data_annotation.csv, has the same structure with Sentrix IDs annotated as "reference".
-- remote_server_cn_results_directory: directory on remote directory where CNV results will be stored in compressed parquet format. For CQcase running on a remote server via CQmanager.
+- remote_server_results_directory: directory on remote directory where CNV results will be stored in compressed parquet format. For CQcase running on a remote server via CQmanager.
 - remote_server_summary_plots_base_directory: summary plots will be stored here on the remote server. For CQall running on a remote server via CQmanager.
 
 **CQcalc-specific settings**
-
--process_inconvertible_sentrix_ids: set this to True to allow reprocessing Sentrix IDs that were previously determined to be corrupt. Default is False. Note: Depending on the amount of IDAT files present on a system, reprocessing many files can require significant amounts of time and resources.
--check_if_idats_have_equal_size: set this to True to reject IDAT pairs with unequal file size. Default is True. Note: Valid IDAT files are typically in the same size range.
 -minimum_idat_size: set here minimum IDAT size in MB per file. Default is 1. Note: For more stringent filtering (many IDAT file types are larger than 1 MB) increase according to expected file size.
 
 **CQall_plotter-specific settings**
 - minimal_number_of_sentrix_ids_for_summary_plot: controls minimum number of analyzed samples per summary plot. Default is 5.
 
 **Server name displayed in CQcase and CQall**
-- server_name: A string or sentence wrapped in double quotes you put here will be displayed in the bottom right corner in CQcase and CQall.
+- server_name: A string wrapped in double quotes you put here will be displayed in the bottom right corner in CQcase and CQall.
 
 **CQcase- and CQall-specific settings**
 - cqcase_host_app_port: port where you will be able to access CQcase. Default is 8052.
@@ -146,7 +142,6 @@ while the remaining CnQuant are background applications intended to run on a sys
 **CQmanager-specific settings. To control containerized CQviewers on remote server, setting up ssh keys is required**
 - CQmanager_gunicorn_host_address: Address where to run CQmanager. Default is 127.0.0.1.
 - CQmanager_gunicorn_port: Port on which to run CQmanager. Default is 8002.
-- cnv_register_file_name: File name for a register of processed Sentrix IDs. Default is cnv_analysis_failure_register.csv.
 - CQ_manager_batch_size: Number of Sentrix IDs per CQcalc container. Default is 100. Due to R memory leaks, it is recommended to tune this parameter moderately. Depends on the available RAM and CPU threads.
 - CQ_manager_batch_timeout: Seconds after CQmanager starts, a container that did not reach set batch size. Default is 300.
 - max_number_of_cqcalc_containers: Maximum number of CQcalc containers running in parallel. Default is 10. Depends on your available RAM and CPUs.
@@ -170,11 +165,11 @@ while the remaining CnQuant are background applications intended to run on a sys
 **Data annotation URLs**
 - DATA_ANNOTATION_SHEET: URL for Google sheet csv output for annotations.
 - REFERENCE_DATA_ANNOTATION_SHEET: URL for Google sheet csv output for reference annotations.
-- URL Example: https://docs.google.com/spreadsheets/d/e/2PACX-1vRhQ7Cr3aBo8W9Ne8DAehMvFRxYd395ENIW9giK2ATQ3QSrM8jA2E7xXbnW7CWKMdh0IhN0YqWn37Wr/pub?gid=0&single=true&output=csv
+ URL Example: https://docs.google.com/spreadsheets/d/e/2PACX-1vRhQ7Cr3aBo8W9Ne8DAehMvFRxYd395ENIW9giK2ATQ3QSrM8jA2E7xXbnW7CWKMdh0IhN0YqWn37Wr/pub?gid=0&single=true&output=csv
 
 
 ## Software requirements
-- Ubuntu 20.04 or 22.04 (other distributions have not been tested).
+- Ubuntu 20.04, 22.04, 24.04 or 25.04 (other distributions have not been tested).
 - Python 3.10, 3.11, or 3.12.
 - Docker (recommended) or WLS2 (CQmanager is not implemented on WLS2).
 - Manifests from [Mepylome](https://pypi.org/project/mepylome) package.
@@ -185,9 +180,7 @@ while the remaining CnQuant are background applications intended to run on a sys
 ## Manifests, reference IDAT pair, and data annotations download
 
 - Download [data annotation file](https://epidip.usb.ch/cnquant/data_annotation.csv) and [reference data annotation file](https://epidip.usb.ch/cnquant/reference_data_annotation.csv) data annotation sheets into the "diagnoses" directory specified in your .env file. They have to be named data_annotation.csv and reference_data_annotation.csv, respectively.
-- Download [manifest](https://epidip.usb.ch/cnquant/cnquant_manifest.parquet) into the "manifests" directory specified in your .env file.
 - Download [gaps.csv.gz](https://epidip.usb.ch/cnquant/gaps.csv.gz) into the "manifests" directory specified in your .env file.
-- Download [probes_in_genes_coordinate_ranges.csv.gz](https://epidip.usb.ch/cnquant/probes_in_genes_coordinate_ranges.csv.gz) into the "manifests" directory specified in your .env file.
 - Download [reference IDAT pairs](https://epidip.usb.ch/cnquant/reference_data.zip) and unzip it into the IDAT directory specified in your .env file. A reference IDAT pair for cg indices is also there.
 
 ## Execution with CQmanager
