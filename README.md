@@ -27,8 +27,9 @@ through a web browser CnQuant consists of the following programs (stored in sepa
 - [CQcase](https://github.com/neuropathbasel-pub/CQcase)
 - [CQall](https://github.com/neuropathbasel-pub/CQall)
 
-CnQuant seamlessly unifies raw data from multiple kit versions (450k, EPICv1, and EPICv2) by merging it into an Illumina Infinium Methylation array 450k format for downstream processing.
-Based on the harmonized data, [CQcalc](https://github.com/neuropathbasel-pub/CQcalc) computes copy number variants (CNVs)
+[CQcalc](https://github.com/neuropathbasel-pub/CQcalc) analyses the data with array type specific probes, and produces single-case, array-specific data and plots.
+Additionally, CQcalc seamlessly unifies raw data from multiple kit versions by finding overlapping probes in their Illumina-provided manifests of selected array types for downstream processing.
+Based on the resulting data, CQcalc computes copy number variants (CNVs)
 and [CQcase](https://github.com/neuropathbasel-pub/CQcase) visualizes these results for every processed IDAT pair,
 displaying potentially actionable targets in point-of-care settings.
 Beyond case-specific CNV analysis, the [CQall plotter](https://github.com/neuropathbasel-pub/CQall_plotter) computes tumor entity-specific summary plots from case collections,
@@ -36,7 +37,7 @@ which highlights recurrent CNV patterns.
 Summary plots are visualized with [CQall](https://github.com/neuropathbasel-pub/CQall).
 In sum, CnQuant simplifies complex workflows, delivering robust results in short time in an intuitive package.
 CnQuant is optimized for low-latency data visualization and inspection.
-Microarray data are pre-analyzed on a local server and stored in Parquet files for rapid viewing and examination through the web-based frontends [CQcase](https://github.com/neuropathbasel-pub/CQcase) and [CQall](https://github.com/neuropathbasel-pub/CQall).
+Microarray data are pre-analyzed on a local server and stored in Zstandard-compressed Parquet files for rapid viewing and examination through the web-based, frontend applications [CQcase](https://github.com/neuropathbasel-pub/CQcase) and [CQall](https://github.com/neuropathbasel-pub/CQall).
 
 # Requirements
 
