@@ -113,8 +113,8 @@ while the remaining CnQuant are background applications intended to run on a sys
 - remote_server_summary_plots_base_directory: summary plots will be stored here on the remote server. For CQall running on a remote server via CQmanager.
 
 **CQcalc-specific settings**
--minimum_idat_size: set here minimum IDAT size in MB per file. Default is 1. Note: For more stringent filtering (many IDAT file types are larger than 1 MB) increase according to expected file size.
-
+- minimum_idat_size: set here minimum IDAT size in MB per file. Default is 1. Note: For more stringent filtering (many IDAT file types are larger than 1 MB) increase according to expected file size.
+- minimum_number_of_reference_samples: minimum number of reference samples per array type for the analysis
 **CQall_plotter-specific settings**
 - minimal_number_of_sentrix_ids_for_summary_plot: controls minimum number of analyzed samples per summary plot. Default is 5.
 
