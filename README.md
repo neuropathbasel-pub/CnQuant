@@ -113,6 +113,15 @@ while the remaining CnQuant are background applications intended to run on a sys
 - remote_server_results_directory: directory on remote directory where CNV results will be stored in compressed parquet format. For CQcase running on a remote server via CQmanager.
 - remote_server_summary_plots_base_directory: summary plots will be stored here on the remote server. For CQall running on a remote server via CQmanager.
 
+**Permission settings**
+- LOCAL_USER_ID: local user ID for executing containers with. Required for file permissions.
+- LOCAL_GROUP_ID: local group ID for executing containers with. Required for file permissions.
+- REMOTE_USER_ID: remote user ID for executing containers with. Required for file permissions.
+- REMOTE_GROUP_ID: remote group ID for executing containers with. Required for file permissions.
+
+**Logger settings**
+- log_level: severity level of log outputs. Default is error.
+
 **CQcalc-specific settings**
 - minimum_idat_size: set here minimum IDAT size in MB per file. Default is 1. Note: For more stringent filtering (many IDAT file types are larger than 1 MB) increase according to expected file size.
 - minimum_number_of_reference_samples: minimum number of reference samples per array type for the analysis
@@ -155,8 +164,6 @@ while the remaining CnQuant are background applications intended to run on a sys
 - CQviewers_docker_network_name: Name for the network that will be created for CQcase and CQall. Default is cnquant_network.
 - initiate_cqcase_and_cqall_on_startup: Set it to True if you wish to start CQcase and CQall with Redis containers on CQmanager startup. Default is False.
 - notify_if_CQcase_and_CQall_are_not_running: Set it to True if you wish to be notified per email in case CQmanager-managed CQcase or CQall are not running. Emails will not be sent if Email notification setting are incorrectly set. Default is False.
-- remote_user_id: remote user ID for executing containers with. Required for file permissions.
-- remote_group_id: remote group ID for executing containers with. Required for file permissions.
 
 **Email notification settings**
 - crash_email_sender: sender email address for notification emails in case of a crash. Works with Google's Gmail.
