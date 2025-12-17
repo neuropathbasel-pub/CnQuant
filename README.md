@@ -68,10 +68,8 @@ docker load -i cnquant_images.tar
 
 WSL2 (Windows Subsystem for Linux 2) is an alternative to Docker for running CnQuant apps, detailed in [Running CnQuant apps in WSL2](#running-cnquant-apps-in-wsl2).
 
-
 Primarily for developers or embedded systems with limited resources or non-x86_64 CPUs,
 CnQuant components can be installed from source using pip.
-CnQuant requires Python and R (version 4.3.0 for [CQcalc](https://github.com/neuropathbasel-pub/CQcalc)) with a compatible Python environment.
 Installation instructions are provided in each component's repository.
 
 ## Directory structure and data annotation files
