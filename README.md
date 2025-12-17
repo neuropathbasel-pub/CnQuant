@@ -4,6 +4,7 @@
 - [Introduction](#Introduction)
 - [Requirements](#requirements)
     - [Directory structure and data annotation files](#directory-structure-and-data-annotation-files)
+    - [Illumina manifest files](#illumina-manifest-files)
     - [Software requirements](#software-requirements)
     - [Manifests, reference IDAT pair, and data annotations download](#manifests-reference-IDAT-pair-and-data-annotations-download)
 - [Execution with CQmanager](#execution-with-cqmanager)
@@ -80,6 +81,11 @@ The .env file needs to be located in each apps' main directory or its parent dir
 The .env file in an application directory has precedence before the .env file in the parent's directory.
 An "example.env" file is provided in each application's directory or in the parent's directory.
 Adapting .env files for WSL2 is typically not necessary.
+
+## Illumina manifest files
+
+The Illumina Infinium Methylation Manifests are essential for the software to work.
+Please download them and place (without any unpacking or modifications) in a directory called archived_manifests inside of the manifests directory specified in your .env file.
 
 ## Environment variables
 
