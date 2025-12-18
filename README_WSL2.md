@@ -14,12 +14,12 @@
 >Here is a [tutorial](https://www.windowscentral.com/how-install-wsl2-windows-10).
 
 Steps:
-1. Download the [WSL2 image](https://epidip.usb.ch/cnquant/wsl_cnquant.tar).
+1. Download the [WSL2 image](https://epidip.usb.ch/cnquant/cnquant.tar).
 2. Import the WSL2 image:
 Open PowerShell and run:
 
 ``` powershell
-wsl --import cnquant windows_path_where_you_choose_to_keep_WSL_images windows_path_to_where_you_have_the_compressed_image\wsl_cnquant.tar
+wsl --import cnquant windows_path_where_you_choose_to_keep_WSL_images windows_path_to_where_you_have_the_compressed_image\cnquant.tar
 ```
 
 Replace
@@ -28,7 +28,7 @@ C:\path\to\store\wsl\images
 ```
 with where you prefer to store the WSL2 image and  
 ```
-C:\path\to\wsl_cnquant.tar
+C:\path\to\cnquant.tar
 ```
 with the path to the downloaded image.
 
@@ -38,7 +38,7 @@ with the path to the downloaded image.
 3. Copy Sentrix ID pairs:
 - Place your Sentrix ID pairs and reference IDAT files in:
 ```
-\\wsl$\cnquant\home\cnquant\data\idat
+\\wsl.localhost\cnquant\home\cnquant\data\idat
 ```
 
 4. Update the reference annotations in:
