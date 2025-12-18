@@ -4,9 +4,9 @@
 - [Introduction](#Introduction)
 - [Requirements](#requirements)
     - [Directory structure and data annotation files](#directory-structure-and-data-annotation-files)
+    - [Manifests, reference IDAT pair, and data annotations download](#manifests-reference-IDAT-pair-and-data-annotations-download)
     - [Illumina manifest files](#illumina-manifest-files)
     - [Software requirements](#software-requirements)
-    - [Manifests, reference IDAT pair, and data annotations download](#manifests-reference-IDAT-pair-and-data-annotations-download)
 - [Execution with CQmanager](#execution-with-cqmanager)
 - [Running CnQuant apps in WSL2](#running-CnQuant-apps-in-wsl2)
 - [Alternative ways to install and run CnQuant apps](#alternative-ways-to-install-and-run-cnquant-apps)
@@ -72,13 +72,6 @@ Primarily for developers or embedded systems with limited resources or non-x86_6
 CnQuant components can be installed from source using pip.
 Installation instructions are provided in each component's repository.
 
-## Manifests, reference IDAT pair, and data annotations download
-
-- Download [data annotation file](https://epidip.usb.ch/cnquant/data_annotation.csv) and [reference data annotation file](https://epidip.usb.ch/cnquant/reference_data_annotation.csv) data annotation sheets into the "diagnoses" directory specified in your .env file (described below in [## Environment variables](#environment-variables)). They have to be named data_annotation.csv and reference_data_annotation.csv, respectively.
-- Download [gaps.csv.gz](https://epidip.usb.ch/cnquant/gaps.csv.gz) into the "manifests" directory specified in your .env file (described below in [## Environment variables](#environment-variables)).
-- Download [reference IDAT pairs](https://epidip.usb.ch/cnquant/reference_data.zip) and unzip it into the IDAT directory specified in your .env file (described below in [## Environment variables](#environment-variables)). A reference IDAT pair for cg indices is also there.
-
-
 ## Directory structure and data annotation files
 
 For convenience, the same .env file is used for each app.
@@ -86,7 +79,14 @@ The .env file needs to be located in each apps' main directory or its parent dir
 The .env file in an application directory has precedence before the .env file in the parent's directory.
 Adapting .env files for WSL2 is typically not necessary.
 
-CnQuant applications require
+CnQuant applications require [data annotation file](https://epidip.usb.ch/cnquant/data_annotation.csv) and [reference data annotation file](https://epidip.usb.ch/cnquant/reference_data_annotation.csv) placed in the diagnosis directory (described below).
+
+## Manifests, reference IDAT pair, and data annotations download
+
+- Download [data annotation file](https://epidip.usb.ch/cnquant/data_annotation.csv) and [reference data annotation file](https://epidip.usb.ch/cnquant/reference_data_annotation.csv) data annotation sheets into the "diagnoses" directory specified in your .env file (described below in [## Environment variables](#environment-variables)). They have to be named data_annotation.csv and reference_data_annotation.csv, respectively.
+- Download [gaps.csv.gz](https://epidip.usb.ch/cnquant/gaps.csv.gz) into the "manifests" directory specified in your .env file (described below in [## Environment variables](#environment-variables)).
+- Download [reference IDAT pairs](https://epidip.usb.ch/cnquant/reference_data.zip) and unzip it into the IDAT directory specified in your .env file (described below in [## Environment variables](#environment-variables)). A reference IDAT pair for cg indices is also there.
+
 
 ## Illumina manifest files
 
