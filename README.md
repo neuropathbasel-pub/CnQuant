@@ -88,7 +88,7 @@ Please download them and place (without any unpacking or modifications) in a dir
 
 Before running any of the 5 applications (not needed for WSL2),
 you will need to create the following directories and define them in your .env file.
-Download [example.env](https://github.com/neuropathbasel-pub/CnQuant/blob/main/example.env) into your environment directory or in it's parent directory where you wish to install one of the CnQuant apps,
+Download [example.env](https://github.com/neuropathbasel-pub/CnQuant/blob/main/example.env) into your CnQuant applications directories or in their parent directory,
 rename it to .env and adjust the paths inside the .env file.
 
 >[!Note]
