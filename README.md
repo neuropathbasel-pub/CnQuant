@@ -97,7 +97,7 @@ rename it to .env and adjust the paths inside the .env file.
 
 **Local directories**
 - log_directory: log files in plain text format will be saved here.
-- idat_directory: contains raw IDAT file pairs (*_Red.idat and *_Grn-idat). Subdirectories will not recursively be checked for IDAT pairs.
+- idat_directory: contains raw IDAT file pairs (*_Red.idat and *_Grn.idat). Subdirectories will not recursively be checked for IDAT pairs.
 - diagnoses_directory: has to contain two comma-separated value (CSV) files: data_annotation.csv with two headers, Sentrix_id and MC. data_annotation.csv contains annotated Sentrix IDs and their user-defined methylation classes. The file reference_data_annotation.csv also has two headers but with different names: Sentrix_id and array_type.
 - results_directory: CNV results will be stored here in Parquet format.
 - summary_plots_base_directory: summary plots will be stored here.
