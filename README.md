@@ -102,8 +102,9 @@ Please download them and place (without any unpacking or modifications) in a dir
 
 ## Environment variables
 
-Before running any of the 5 applications (not needed for WSL2),
+Before running any of the 5 applications,
 you will need to create the following directories and define them in your .env file.
+The .env file was pre-prepared for the CnQuant applications installed in the WSL2 image.
 
 >[!Note]
 >Some visual file explorers (Thunar, Gnome, Explorer) do not display files starting with a "." in their filename by default and might require settings adjustment.
