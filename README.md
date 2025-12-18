@@ -88,9 +88,9 @@ CnQuant applications require [data annotation file](https://epidip.usb.ch/cnquan
 
 ## Manifests, reference IDAT pair, and data annotations download
 
-- Download [data annotation file](https://epidip.usb.ch/cnquant/data_annotation.csv) and [reference data annotation file](https://epidip.usb.ch/cnquant/reference_data_annotation.csv) data annotation sheets into the "diagnoses" directory specified in your .env file (described below in [## Environment variables](#environment-variables)). They have to be named data_annotation.csv and reference_data_annotation.csv, respectively.
-- Download [gaps.csv.gz](https://epidip.usb.ch/cnquant/gaps.csv.gz) into the "manifests" directory specified in your .env file (described below in [## Environment variables](#environment-variables)).
-- Download [reference IDAT pairs](https://epidip.usb.ch/cnquant/reference_data.zip) and unzip it into the IDAT directory specified in your .env file (described below in [## Environment variables](#environment-variables)). A reference IDAT pair for cg indices is also there.
+- Download [data annotation file](https://epidip.usb.ch/cnquant/data_annotation.csv) and [reference data annotation file](https://epidip.usb.ch/cnquant/reference_data_annotation.csv) data annotation sheets into the "diagnoses" directory specified in your .env file (described below in [Environment variables](#environment-variables)). They have to be named data_annotation.csv and reference_data_annotation.csv, respectively.
+- Download [gaps.csv.gz](https://epidip.usb.ch/cnquant/gaps.csv.gz) into the "manifests" directory specified in your .env file (described below in [Environment variables](#environment-variables)).
+- Download [reference IDAT pairs](https://epidip.usb.ch/cnquant/reference_data.zip) and unzip it into the IDAT directory specified in your .env file (described below in [Environment variables](#environment-variables)). A reference IDAT pair for cg indices is also there.
 
 
 ## Illumina manifest files
