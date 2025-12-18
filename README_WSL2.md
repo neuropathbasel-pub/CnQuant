@@ -14,21 +14,21 @@
 >Here is a [tutorial](https://www.windowscentral.com/how-install-wsl2-windows-10).
 
 Steps:
-1. Download the [WSL2 image](https://epidip.usb.ch/cnquant/cnquant.tar).
+1. Download the [WSL2 image](https://epidip.usb.ch/cnquant/wsl_cnquant.tar).
 2. Import the WSL2 image:
 Open PowerShell and run:
 
 ``` powershell
-wsl --import cnquant windows_path_where_you_wish_to_keep_WSL_images windows_path_to_where_you_have_the_compressed_image\cnquant.tar
+wsl --import cnquant windows_path_where_you_choose_to_keep_WSL_images windows_path_to_where_you_have_the_compressed_image\wsl_cnquant.tar
 ```
 
 Replace
 ```
 C:\path\to\store\wsl\images
 ```
-with where you want to store the WSL2 image and  
+with where you prefer to store the WSL2 image and  
 ```
-C:\path\to\cnquant.tar
+C:\path\to\wsl_cnquant.tar
 ```
 with the path to the downloaded image.
 
@@ -38,14 +38,13 @@ with the path to the downloaded image.
 3. Copy Sentrix ID pairs:
 - Place your Sentrix ID pairs and reference IDAT files in:
 ```
-\\wsl.localhost\cnquant\home\cnquant\data\idat
+\\wsl$\cnquant\home\cnquant\data\idat
 ```
 
 4. Update the reference annotations in:
 ```
 \\wsl.localhost\cnquant\home\cnquant\data\diagnoses\reference_data_annotation.csv
 ```
-
 Add Sentrix IDs in the Sentrix_id column and references in the MC column.
 
 # CN analysis with CQcalc
@@ -82,11 +81,11 @@ wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqall_plotter/run_cqall_
 or
 Start CQall_plotter in WSL2 image with modified settings:
 ``` powershell
-wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqall_plotter/run_cqall_plotter.sh --preprocessing_method illumina --min_sentrix_ids_per_plot 5 --methylation_classes AML,GBM_RTKII"
+wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqall_plotter/run_cqall_plotter.sh --preprocessing_method illumina --min_sentrix_ids_per_plot 3 --methylation_classes AML,GBM_RTKII"
 ```
 where:</br>
 --methylation_classes takes comma-separated list of methylation classes that are available in data_annotation.csv file in diagnoses directory.</br>
---preprocessing_method can be illumina or swan. Requires output from CQcalc.</br>
+--preprocessing_method can be illumina, noob or swan. Requires output from CQcalc.</br>
 --min_sentrix_ids_per_plot defines minimum number of samples per methylation class to generate a plot.
 
 
@@ -99,10 +98,8 @@ where:</br>
 ``` powershell
 wsl -d cnquant --user cnquant -e bash -c /home/cnquant/cqcase/run_cqcase.sh
 ```
-2. Access CQcase in your browser:
-```
-http:localhost:8062/cqcase
-```
+2. Access CQcase by copying the URL the script prints in the terminal to the browser.
+
 # CN Summary Plots inspection with CQall
 
 >[!NOTE]
@@ -112,7 +109,4 @@ http:localhost:8062/cqcase
 ``` powershell
 wsl -d cnquant --user cnquant -e bash -c /home/cnquant/cqall/run_cqall.sh
 ```
-2. Access CQcase in your browser:
-```
-http:localhost:8060/cqall
-```
+2. Access CQcase by copying the URL the script prints in the terminal to the browser.
