@@ -74,7 +74,7 @@ Installation instructions are provided in each component's repository.
 
 ## Directory structure and data annotation files
 
-If you prefer running the CnQuant applications without using Docker or WSL, we suggest creating a parent directory for the QnQuant applications to install each application there.
+If you prefer running the CnQuant applications without using Docker or WSL, we suggest creating a parent directory for the QnQuant applications to install each application there in respective subdirectories.
 
 Download [example.env](https://github.com/neuropathbasel-pub/CnQuant/blob/main/example.env) into your CnQuant applications directory or in each application directory,
 rename it to .env and adjust the paths inside the .env file.
