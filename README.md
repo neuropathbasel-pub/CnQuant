@@ -156,7 +156,7 @@ while the remaining CnQuant are background applications intended to run on a sys
 **CQmanager-specific settings. To control containerized CQviewers on remote server, setting up ssh keys is required**
 - CQmanager_gunicorn_host_address: Address where to run CQmanager. Default is 127.0.0.1.
 - CQmanager_gunicorn_port: Port on which to run CQmanager. Default is 8002.
-- CQ_manager_batch_size: Number of Sentrix IDs per CQcalc container. Default is 100. Due to R memory leaks, it is recommended to tune this parameter moderately. Depends on the available RAM and CPU threads.
+- CQ_manager_batch_size: Number of Sentrix IDs per CQcalc container. Default is 100.
 - CQ_manager_batch_timeout: Seconds after CQmanager starts, a container that did not reach set batch size. Default is 300.
 - max_number_of_cqcalc_containers: Maximum number of CQcalc containers running in parallel. Default is 10. Depends on your available RAM and CPUs.
 - run_CQviewers_on_remote_server: Set it to True if you wish to run CQcase and CQall on a remote server. Default is False. Remember that you will need to set up an ssh key and provide username and host. Docker needs to be installed on the host.
