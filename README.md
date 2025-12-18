@@ -42,9 +42,9 @@ Microarray data are pre-analyzed on a local server and stored in Zstandard-compr
 
 # Requirements
 
-A Docker installation is required.
+The installation of Docker is required.
 Ensure to carry out the Docker post-installation steps to run the container as a non-root user.
-If new to Docker, the [Docker Curriculum](https://docker-curriculum.com/) might be helpful.
+If you are new to Docker, the [Docker Curriculum](https://docker-curriculum.com/) might be helpful.
 In case of running CnQuant applications on a server without internet access, you will need to download all docker images elsewhere and transfer them to your Docker host:
 
 ``` bash
