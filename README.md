@@ -77,7 +77,6 @@ Installation instructions are provided in each component's repository.
 For convenience, the same .env file is used for each app.
 The .env file needs to be located in each apps' main directory or its parent directory.
 The .env file in an application directory has precedence before the .env file in the parent's directory.
-An "example.env" file is provided in each application's directory or in the parent's directory.
 Adapting .env files for WSL2 is typically not necessary.
 
 ## Illumina manifest files
