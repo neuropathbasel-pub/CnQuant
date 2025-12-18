@@ -74,6 +74,11 @@ Installation instructions are provided in each component's repository.
 
 ## Directory structure and data annotation files
 
+If you prefer running the CnQuant applications without using Docker or WSL, we suggest creating a parent directory for the QnQuant applications to install each application there.
+
+Download [example.env](https://github.com/neuropathbasel-pub/CnQuant/blob/main/example.env) into your CnQuant applications directory or in each application directory,
+rename it to .env and adjust the paths inside the .env file.
+
 For convenience, the same .env file is used for each app.
 The .env file needs to be located in each apps' main directory or its parent directory.
 The .env file in an application directory has precedence before the .env file in the parent's directory.
@@ -97,8 +102,6 @@ Please download them and place (without any unpacking or modifications) in a dir
 
 Before running any of the 5 applications (not needed for WSL2),
 you will need to create the following directories and define them in your .env file.
-Download [example.env](https://github.com/neuropathbasel-pub/CnQuant/blob/main/example.env) into your CnQuant applications directories or in their parent directory,
-rename it to .env and adjust the paths inside the .env file.
 
 >[!Note]
 >Some visual file explorers (Thunar, Gnome, Explorer) do not display files starting with a "." in their filename by default and might require settings adjustment.
