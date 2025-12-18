@@ -117,7 +117,7 @@ while the remaining CnQuant are background applications intended to run on a sys
 - remote_server_results_directory: directory on remote directory where CNV results will be stored in compressed parquet format. For CQcase running on a remote server via CQmanager.
 - remote_server_summary_plots_base_directory: summary plots will be stored here on the remote server. For CQall running on a remote server via CQmanager.
 
-**Permission settings**
+**File system permission settings**
 - LOCAL_USER_ID: specifies the numeric user ID for the local machine. Required for file permissions. This must match the UID of the corresponding group on your local machine to prevent permission issues with shared volumes or files.
 - LOCAL_GROUP_ID: specifies the numeric group ID for the local machine for executing containers with. This must match the GID of the corresponding group on your local machine to prevent permission issues with shared volumes or files.
 - REMOTE_USER_ID: specifies the numeric user ID for the remote server for executing containers with. This must match the UID of the corresponding group on your remote machine to prevent permission issues with shared volumes or files.
