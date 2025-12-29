@@ -72,6 +72,9 @@ Primarily for developers or embedded systems with limited resources or non-x86_6
 CnQuant components can be installed from source using pip.
 Installation instructions are provided in each component's repository.
 
+>[!WARNING]
+>CQcalc and CQmanager require case-sensitive IDAT suffixes _Red.idat and _Grn.idat. Files like _RED.IDAT or _red.idat will not be processed.
+
 ## Directory structure and data annotation files
 
 If you prefer running the CnQuant applications without using Docker or WSL, we suggest creating a parent directory for the QnQuant applications to install each application there in respective subdirectories.
