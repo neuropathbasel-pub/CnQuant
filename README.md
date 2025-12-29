@@ -20,7 +20,7 @@ Use is explicitly restricted to academic and not-for-profit organizations.
 # Introduction
 
 CnQuant, is a lightweight stack of 5 applications designed to streamline the analysis of Illumina Infinium Methylation array data
-through a web browser CnQuant consists of the following programs (stored in separate repositories) for CNV calculation and visualization:
+through a web browser. CnQuant consists of the following programs (stored in separate repositories) for CNV calculation and visualization:
 
 - [CQmanager](https://github.com/neuropathbasel-pub/CQmanager)
 - [CQcalc](https://github.com/neuropathbasel-pub/CQcalc)
