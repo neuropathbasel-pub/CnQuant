@@ -163,6 +163,8 @@ while the remaining CnQuant are background applications intended to run on a sys
 - maximum_number_of_genes_to_plot: Maximum number of additional genes plotted in CQcase and CQall. Default is 600. Note that plotting too many genes will make the plot quite unreadable and will slow down the application.
 - CACHING_DB_cqcase: Redis caching database number for CQcase. Default is.
 - CACHING_DB_cqall: Redis caching database number for CQall. Default is 1.
+- USE_CACHE: Switches on or off the use of cache by CQcase and CQcalc. Defaults is True.
+- available_data_refresh_milliseconds: Controls the time in milliseconds after which CQall will automatically update the available data. Default is 60000 ms.
 
 **Docker images**
 - cqcalc_image: CQcalc Docker image name. Default is neuropathologiebasel/cqcalc:latest
