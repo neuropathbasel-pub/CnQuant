@@ -171,6 +171,7 @@ while the remaining CnQuant are background applications intended to run on a sys
 - cqcase_image: CQcase Docker image name. Default is neuropathologiebasel/cqcase:latest
 - cqall_image: CQall Docker image name. Default is neuropathologiebasel/cqall:latest
 - cqall_plotter_image: CQall plotter Docker image name. Default is neuropathologiebasel/cqall_plotter:latest
+- cnquant_python_base_image: Base Docker image for CnQuant applications. Default is neuropathologiebasel/cnquant_python_base:latest
 
 **CQmanager-specific settings. To control containerized CQviewers on remote server, setting up ssh keys is required**
 - CQmanager_gunicorn_host_address: Address where to run CQmanager. Default is 127.0.0.1.
