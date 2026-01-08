@@ -158,7 +158,7 @@ while the remaining CnQuant are background applications intended to run on a sys
 - email_notification_port: The port for SMTP server for email notifications. Default is 587.
 - workers: Number of workers for [Gunicorn](https://gunicorn.org/) for running CQcase and CQall. Default is 10, suitable for multiprocessor systems. If you are running the apps on a desktop PC for a single user only, set it to 1.
 - timeout: Timeout for caching. Default is 300. Unit is seconds.
-- REDIS_HOST: host for [Redis](https://redis.io/) caching. Default is localhost.
+- REDIS_HOST: host for [Redis](https://redis.io/) caching. Default is cnquant_redis. For running non-containerized CnQuant applications on the same machine, set it to localhost.
 - REDIS_PORT: Port for Redis caching. Default is 6379.
 - maximum_number_of_genes_to_plot: Maximum number of additional genes plotted in CQcase and CQall. Default is 600. Note that plotting too many genes will make the plot quite unreadable and will slow down the application.
 - CACHING_DB_cqcase: Redis caching database number for CQcase. Default is.
