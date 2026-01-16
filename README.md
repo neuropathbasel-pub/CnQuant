@@ -182,8 +182,8 @@ while the remaining CnQuant are background applications intended to run on a sys
 - run_CQviewers_on_remote_server: Set it to True if you prefer to run CQcase and CQall on a remote server. Default is False. Remember that you will need to set up an ssh key and provide username and host. Docker needs to be installed on the host and the remote machine.
 - CQviewers_host: Your remote server host name or IP.
 - CQviewers_user: Your remote server username. This user needs to be able to run Docker containers.
-- CQall_container_name: Name for CQall container for Docker naming purposes. Default is cqall.
-- CQcase_container_name: Name for CQcase container for Docker naming purposes. Default is cqcase.
+- CQall_container_name: Name for CQall container for Docker and application naming purposes. Default is cqall.
+- CQcase_container_name: Name for CQcase container for Docker and application naming purposes. Default is cqcase.
 - cnquant_redis_name: Name for Redis container for Docker naming purposes. Default is cnquant_redis.
 - CQviewers_docker_network_name: Name for the network that will be created for CQcase and CQall. Default is cnquant_network.
 - initiate_cqcase_and_cqall_on_startup: Set it to True if you wish to start CQcase and CQall with Redis containers on CQmanager startup. Default is False.
