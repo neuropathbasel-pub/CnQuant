@@ -81,12 +81,11 @@ wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqall_plotter/run_cqall_
 or
 Start CQall_plotter in WSL2 image with modified settings:
 ``` powershell
-wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqall_plotter/run_cqall_plotter.sh --preprocessing_method illumina --min_sentrix_ids_per_plot 3 --methylation_classes AML,GBM_RTKII"
+wsl -d cnquant --user cnquant -e bash -c "/home/cnquant/cqall_plotter/run_cqall_plotter.sh --preprocessing_method illumina --methylation_classes AML,GBM_RTKII"
 ```
 where:</br>
 --methylation_classes takes comma-separated list of methylation classes that are available in data_annotation.csv file in diagnoses directory.</br>
 --preprocessing_method can be illumina, noob or swan. Requires output from CQcalc.</br>
---min_sentrix_ids_per_plot defines minimum number of samples per methylation class to generate a plot.
 
 
 # Per-case results inspection with CQcase
